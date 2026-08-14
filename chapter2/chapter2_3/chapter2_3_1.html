@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>2022 교육과정 - 고등학교 - 인공지능 기초 - 내용체계</title>
+    <link rel="stylesheet" href="../../styles.css">
+</head>
+<body>
+    <!-- 보라색 배경 -->
+    <article class="subject_article">
+        <!-- 문서 상단의 현재 어느 페이지인지 알려주는 제목 -->
+        <h3 style="text-align: center;">고등학교 인공지능 기초 내용체계</h3>
+        <!-- 문서 상단에 위치한 내비게이션 바 subs 클래스로 배열형태로 js에서 쓸수 있도록 되어있다. 
+            스타일은 하늘색배경에 원형테두리가 적용되어 있으며 js로 마우스 호버링 동작에 반응하도록 되어있다. 
+            테스트하기에서는 단원 이름을 누르면 각 단원에 맞는 내용체계만 빈칸이 뚫린채로 화면에 나오도록 되어있다.
+            단원 이름을 누르면 파란색이 적용되고 글자크기가 커진다.-->
+        <nav class="subject_menu">
+            <ul>
+                <li><span class="subs">인공지능의 이해</span></li>
+                <li><span class="subs">인공지능과 학습</span></li>
+                <li><span class="subs">인공지능의 사회적 영향</span></li>
+                <li><span class="subs">인공지능 프로젝트</span></li>
+            </ul>
+        </nav>
+        <!-- form을 이용해서 quizform 이라는 이름과 id로 버튼으로 내용을 관리할 수 있도록 되어있다.
+            처음 화면을 로딩하면 내비게이션바를 눌러 테스트를 시작하라는 안내문구가 나와있다. -->
+        <form name ="quizform" id="quizform" method="" action="">
+            <!-- 테스트 내용이 들어갈 박스이다. 처음에는 안내문구가 들어있다. -->
+            <article class="subject_article_area" id="blank">
+                <span style="font-weight: bold;">위의 과목을 클릭해 테스트를 시작하세요</span>
+            </article>
+        </form>
+    </article>
+    <script>
+        // 내비게이션 바의 단원을 배열 형식으로 가져온다.
+        const subs = document.getElementsByClassName("subs");
+        // 몇번째 단원인지 알려주는 subnum을 0으로 초기화 한다.
+        let subnum = 0;
+        for (let i = 0; i < subs.length; i++) {
+            // 단원이름 위에 커서를 올리면 포인터모양으로 바꾼다.
+            subs[i].style.cursor="pointer";
+            // 단원이름 위에 커서를 올리거나 내릴 때 배경을 아쿠아로 바꾸거나 지운다.
+            subs[i].addEventListener("mouseover", function() {
+                this.style.background = "aqua";
+            });
+
+            subs[i].addEventListener("mouseout", function() {
+                this.style.background = "";
+            });
+            // 단원 이름을 클릭하면 수행되는 동작이다.
+            subs[i].onclick = function() {
+                for (let j = 0; j < subs.length; j++) { // 클릭하지 않은 단원명을 중간크기에 흑색 스타일을 적용한다.
+                    subs[j].style.fontSize = "medium";
+                    subs[j].style.color = "black";
+                }
+                subs[i].style.fontSize = "larger"; // 클릭한 단원명의 크기를 늘리고 파란색 스타일을 적용한다.
+                subs[i].style.color = "blue";
+                if (i == 0) { // 첫번째 단원을 클릭하면 일어나는 일이다.
+                    subnum = 0; // 현재 첫번째 단원임을 알수 있도록 subnum에 인덱스를 저장해둔다.
+                    /*  테스트내용이 들어갈 곳을 id로 받아온다. 아래의 내용이 들어가게 되며,
+                        내용은 이전 내용체계의 표를 가져오고 중요한 부분에 빈칸이 뚫려있어 채우도록 한다.
+                        제출 버튼을 클릭하면 submit_quiz() 함수를 실행시켜 텍스트박스의 내용을 정답과 비교한다.
+                        제출된 답안이 맞으면 초록색테두리가, 틀리면 붉은색 테두리가 적용된다.
+                        초기화 버튼을 클릭하면 reset_quiz() 함수를 실행시켜 텍스트 박스의 내용을 삭제한다. 
+                        정답 보이기 버튼을 클릭하면 visualize_answers() 함수를 실행시켜 창을 이동하지 않고도 정답을 확인할 수 있도록 한다. */
+                    const blank = document.getElementById("blank"); 
+                    blank.innerHTML= '\
+                        <h4>(1) 인공지능의 이해</h4>\
+                        <table class="details" border="1" style="width:100%; border-collapse: collapse;">\
+                            <tr>\
+                                <td rowspan="2" class="category">핵심 아이디어</td>\
+                                <td class="detail" style="border-bottom: 0px;">• 인공지능은 <input type="text" name="quiz1" class="quiz_textbox"></input>을 모방하는 것으로 실생활에 도움을 준다.</td>\
+                            </tr>\
+                            <tr>\
+                                <td class="detail" style="border-top: 0px;">• <input type="text" name="quiz2" class="quiz_textbox"></input>으로 문제를 해결하는 인공지능을 구현하는 것은 다양한 학문 분야에 활용된다.</td>\
+                            </tr>\
+                            <tr>\
+                                <td rowspan="2" class="catedivision" style="text-align: left;"><span style="display: block; text-align: right;">구분</span><br>&nbsp;범주</td><td rowspan="2" class="division">내용 요소</td>\
+                            </tr>\
+                            <tr>\
+                            </tr>\
+                            <tr>\
+                                <td rowspan="3" class="category">지식 • 이해</td>\
+                                <td class="detail" style="border-bottom: 0px;">• <input type="text" name="quiz3" class="quiz_textbox"></input></td>\
+                            </tr>\
+                            <tr>\
+                                <td class="detail" style="border: 0px;">• <input type="text" name="quiz4" class="quiz_textbox"></input></td>\
+                            </tr>\
+                            <tr>\
+                                <td class="detail" style="border-top: 0px;">• <input type="text" name="quiz5" class="quiz_textbox"></input> </td>\
+                            </tr>\
+                            <tr>\
+                                <td rowspan="3" class="category">과정 • 기능</td>\
+                                <td class="detail" style="border-bottom: 0px;">• 인공지능 기반 <input type="text" name="quiz6" class="quiz_textbox"></input> 탐색하기 </td>\
+                            </tr>\
+                            <tr>\
+                                <td class="detail" style="border-top: 0px;">• <input type="text" name="quiz7" class="quiz_textbox"></input>을 문제 해결에 적용하기</td>\
+                            </tr>\
+                            <tr>\
+                                <td class="detail" style="border-top: 0px;">• <input type="text" name="quiz8" class="quiz_textbox"></input>을 통해 <input type="text" name="quiz9" class="quiz_textbox"></input>을 생성하는 방법 탐색하기</td>\
+                            </tr>\
+                            <tr>\
+                                <td rowspan="2" class="category">가치 • 태도</td>\
+                                <td class="detail" style="border-bottom: 0px;">• 인공지능의 <input type="text" name="quiz10" class="quiz_textbox"></input> 인식</td>\
+                            </tr>\
+                            <tr>\
+                                <td class="detail" style="border-top: 0px;">• 인공지능을 활용하여 실생활 및 다양한 학문 분야의 문제를 해결하는 자세</td>\
+                            </tr>\
+                        </table>\
+                        <input type="button" value="제출" onclick="submit_quiz()"></input>\
+                        <button type="reset" onclick="reset_quiz()">초기화</button>\
+                        <input type="button" value="정답 보이기" onclick="visualize_answers()"></input>\
+                    ';
+                } else if (i == 1) {
+                    subnum = 1;
+                    const blank = document.getElementById("blank");
+                    blank.innerHTML= '\
+                        <h4>(2) 인공지능과 학습</h4>\
+                        <table class="details" border="1" style="width:100%;">\
+                            <tr>\
+                                <td rowspan="2" class="category">핵심 아이디어</td>\
+                                <td class="detail" style="border-bottom: 0px;">• <input type="text" name="quiz1" class="quiz_textbox"></input>의 인공지능을 구현하기 위해서는 <input type="text" name="quiz2" class="quiz_textbox"></input>와 <input type="text" name="quiz3" class="quiz_textbox"></input>을 활용한다.</td>\
+                            </tr>\
+                            <tr>\
+                                <td class="detail" style="border-top: 0px;">• <input type="text" name="quiz4" class="quiz_textbox"></input>은 다중의 은닉층으로 구성된 <input type="text" name="quiz5" class="quiz_textbox"></input>으로 복잡한 문제를 효과적으로 해결하는 데 활용된다.</td>\
+                            </tr>\
+                            <tr>\
+                                <td rowspan="2" class="catedivision" style="text-align: left;"><span style="display: block; text-align: right;">구분</span><br>&nbsp;범주</td>\
+                                <td rowspan="2" class="division">내용 요소</td>\
+                            </tr>\
+                            <tr>\
+                            </tr>\
+                            <tr>\
+                                <td rowspan="3" class="category">지식 • 이해</td>\
+                                <td class="detail" style="border-bottom: 0px;">• <input type="text" name="quiz6" class="quiz_textbox"></input></td>\
+                            </tr>\
+                            <tr>\
+                                <td class="detail" style="border: 0px;">• <input type="text" name="quiz7" class="quiz_textbox"></input></td>\
+                            </tr>\
+                            <tr>\
+                                <td class="detail" style="border-top: 0px;">• <input type="text" name="quiz8" class="quiz_textbox"></input></td>\
+                            </tr>\
+                            <tr>\
+                                <td rowspan="4" class="category">과정 • 기능</td>\
+                                <td class="detail" style="border-bottom: 0px;">• <input type="text" name="quiz9" class="quiz_textbox"></input> 정의하기 </td>\
+                            </tr>\
+                            <tr>\
+                                <td class="detail" style="border: 0px;">• 해결하고자 하는 문제에 <input type="text" name="quiz10" class="quiz_textbox"></input> 탐색하기</td>\
+                            </tr>\
+                            <tr>\
+                                <td class="detail" style="border: 0px;">• 문제에 적합한 <input type="text" name="quiz11" class="quiz_textbox"></input>을 선정하고, 모델 구현하기</td>\
+                            </tr>\
+                            <tr>\
+                                <td class="detail" style="border-top: 0px;">• <input type="text" name="quiz12" class="quiz_textbox"></input>을 활용한 문제 해결 방법 탐색하고 구현하기 </td>\
+                            </tr>\
+                            <tr>\
+                                <td rowspan="2" class="category">가치 • 태도</td>\
+                                <td class="detail" style="border-bottom: 0px;">• 기계학습에 적용하는 데이터의 <input type="text" name="quiz13" class="quiz_textbox"></input> 판단 </td>\
+                            </tr>\
+                            <tr>\
+                                <td class="detail" style="border-top: 0px;">• 학습을 통한 인공지능의 <input type="text" name="quiz14" class="quiz_textbox"></input> 인식</td>\
+                            </tr>\
+                        </table>\
+                        <input type="button" value="제출" onclick="submit_quiz()"></input>\
+                        <button type="reset" onclick="reset_quiz()">초기화</button>\
+                        <input type="button" value="정답 보이기" onclick="visualize_answers()"></input>\
+                    ';
+                } else if (i == 2) {  
+                    subnum = 2;
+                    const blank = document.getElementById("blank");
+                    blank.innerHTML= '\
+                        <h4>(3) 인공지능의 사회적 영향</h4>\
+                        <table class="details" border="1" style="width:100%;">\
+                            <tr>\
+                                <td rowspan="2" class="category">핵심 아이디어</td>\
+                                <td class="detail" style="border-bottom: 0px;">• 인공지능이 현대 사회에 끼치는 <input type="text" name="quiz1" class="quiz_textbox"></input>이 커지고 있고, 이에 따라 직업의 변화 속도가 빨라지고 있다.</td>\
+                            </tr>\
+                            <tr>\
+                                <td class="detail" style="border-top: 0px;">• 인공지능을 올바르게 활용하기 위해서는 인공지능에 의해 발생할 수 있는 <input type="text" name="quiz2" class="quiz_textbox"></input>에 대한 이해가 필요하다.</td>\
+                            </tr>\
+                            <tr>\
+                                <td rowspan="2" class="catedivision" style="text-align: left;"><span style="display: block; text-align: right;">구분</span><br>&nbsp;범주</td>\
+                                <td rowspan="2" class="division">내용 요소</td>\
+                            </tr>\
+                            <tr>\
+                            </tr>\
+                            <tr>\
+                                <td rowspan="3" class="category">지식 • 이해</td>\
+                                <td class="detail" style="border-bottom: 0px;">• 인공지능의 발전과 <input type="text" name="quiz3" class="quiz_textbox"></input></td>\
+                            </tr>\
+                            <tr>\
+                                <td class="detail" style="border: 0px;">• 인공지능과 <input type="text" name="quiz4" class="quiz_textbox"></input></td>\
+                            </tr>\
+                            <tr>\
+                                <td class="detail" style="border-top: 0px;">• 인공지능과 <input type="text" name="quiz5" class="quiz_textbox"></input></td>\
+                            </tr>\
+                            <tr>\
+                                <td rowspan="4" class="category">과정 • 기능</td>\
+                                <td class="detail" style="border-bottom: 0px;">• 인공지능으로 해결할 수 있는 <input type="text" name="quiz6" class="quiz_textbox"></input> 탐색하기</td>\
+                            </tr>\
+                            <tr>\
+                                <td class="detail" style="border: 0px;">• 인공지능에 의해 변화하는 인간의 <input type="text" name="quiz7" class="quiz_textbox"></input> 파악하기</td>\
+                            </tr>\
+                            <tr>\
+                                <td class="detail" style="border: 0px;">• 인공지능과 인간의 <input type="text" name="quiz8" class="quiz_textbox"></input>에 대해 탐색하기</td>\
+                            </tr>\
+                            <tr>\
+                                <td class="detail" style="border-top: 0px;">• 인공지능과 관련된 <input type="text" name="quiz9" class="quiz_textbox"></input>에 대해 논의하기</td>\
+                            </tr>\
+                            <tr>\
+                                <td rowspan="2" class="category">가치 • 태도</td>\
+                                <td class="detail" style="border-bottom: 0px;">• 진로 및 직업 관점에서 인공지능의<input type="text" name="quiz10" class="quiz_textbox"></input></td>\
+                            </tr>\
+                            <tr>\
+                                <td class="detail" style="border-top: 0px;">• 인공지능의 다양한 측면에 대한 <input type="text" name="quiz11" class="quiz_textbox"></input>와 <input type="text" name="quiz12" class="quiz_textbox"></input></td>\
+                            </tr>\
+                        </table>\
+                        <input type="button" value="제출" onclick="submit_quiz()"></input>\
+                        <button type="reset" onclick="reset_quiz()">초기화</button>\
+                        <input type="button" value="정답 보이기" onclick="visualize_answers()"></input>\
+                    ';
+                } else if (i == 3) {  
+                    subnum = 3;
+                    const blank = document.getElementById("blank");
+                    blank.innerHTML= '\
+                        <h4>(4) 인공지능 프로젝트</h4>\
+                        <table class="details" border="1" style="width:100%;">\
+                            <tr>\
+                                <td rowspan="2" class="category">핵심 아이디어</td>\
+                                <td class="detail" style="border-bottom: 0px;">• 인공지능은 다양한 분야와 융합하여 <input type="text" name="quiz1" class="quiz_textbox"></input>를 창출하는 데 도움을 준다.</td>\
+                            </tr>\
+                            <tr>\
+                                <td class="detail" style="border-top: 0px;">• 인공지능은 <input type="text" name="quiz2" class="quiz_textbox"></input>를 달성하는 데 도움을 준다.</td>\
+                            </tr>\
+                            <tr>\
+                                <td rowspan="2" class="catedivision" style="text-align: left;"><span style="display: block; text-align: right;">구분</span><br>&nbsp;범주</td><td rowspan="2" class="division">내용 요소</td>\
+                            </tr>\
+                            <tr>\
+                            </tr>\
+                            <tr>\
+                                <td rowspan="2" class="category">지식 • 이해</td>\
+                                <td class="detail" style="border-bottom: 0px;">• 인공지능과 <input type="text" name="quiz3" class="quiz_textbox"></input></td>\
+                            </tr>\
+                            <tr>\
+                                <td class="detail" style="border-top: 0px;">• 인공지능<input type="text" name="quiz4" class="quiz_textbox"></input>  </td>\
+                            </tr>\
+                            <tr>\
+                                <td rowspan="3" class="category">과정 • 기능</td>\
+                                <td class="detail" style="border-bottom: 0px;">• 인공지능 프로젝트 주제 탐색하기</td>\
+                            </tr>\
+                            <tr>\
+                                <td class="detail" style="border: 0px;">• 인공지능 프로젝트 수행 계획 구안하기</td>\
+                            </tr>\
+                            <tr>\
+                                <td class="detail" style="border-top: 0px;">• 인공지능 소프트웨어 개발 및 평가 방법 설정하기</td>\
+                            </tr>\
+                            <tr>\
+                                <td rowspan="3" class="category">가치 • 태도</td>\
+                                <td class="detail" style="border-bottom: 0px;">• 인류의 지속가능발전에서 인공지능의 <input type="text" name="quiz5" class="quiz_textbox"></input>를 판단하는 태도</td>\
+                            </tr>\
+                            <tr>\
+                                <td class="detail" style="border: 0px;">• 인공지능 프로젝트를 수행하는 과정에서 <input type="text" name="quiz6" class="quiz_textbox"></input>으로 문제를 해결하는 자세 </td>\
+                            </tr>\
+                            <tr>\
+                                <td class="detail" style="border-top: 0px;">• 프로젝트를 수행하는 과정에서 윤리 문제 등 <input type="text" name="quiz7" class="quiz_textbox"></input> 인식</td>\
+                            </tr>\
+                        </table>\
+                        <input type="button" value="제출" onclick="submit_quiz()"></input>\
+                        <button type="reset" onclick="reset_quiz()">초기화</button>\
+                        <input type="button" value="정답 보이기" onclick="visualize_answers()"></input>\
+                    ';
+                }
+            };
+        }
+
+        // submit 버튼의 기본작동동작을 비활성화한다. enter버튼을 누르면 창이 새로고침되어 비활성화 하였다.
+        document.getElementById('quizform').addEventListener('submit', function(event) { 
+            event.preventDefault(); 
+        });
+
+        let total_questions = 0; // 문항수를 저장하는 변수이다. 각 단원을 클릭했을때 단원별로 문항수가 변화한다.
+
+        function submit_quiz() { // 제출버튼을 누르면 실행되는 함수이다.
+            let answers = []; // 답안 배열을 선언한다.
+            if (subnum === 0) { // 단원의 번호에 따라 답안 배열이 달라진다.
+                answers = [0, "인간의 지능적인 행동", "탐색과 추론", "인공지능의 원리", "인공지능과 탐색", "지식의 표현과 추론", "문제 해결 사례", "탐색 알고리즘", "추론", "새로운 지식", "필요성과 적용 가능성"];
+                total_questions = 10; // 단원의 번호에 따라 문항수가 달라진다.
+            } else if (subnum === 1) {
+                answers = [0, "기계학습 기반", "문제 해결에 적합한 데이터", "기계학습 모델", "딥러닝", "인공신경망", "기계학습과 데이터", "기계학습 알고리즘", "인공신경망과 딥러닝", "기계학습을 적용할 문제", "적합한 데이터", "기계학습 알고리즘", "딥러닝", "중요성", "효과성과 효율성"];
+                total_questions = 14;
+            } else if (subnum === 2) {
+                answers = [0, "영향력", "윤리적 문제", "사회 변화", "진로", "윤리", "사회적 문제", "삶과 직업의 양상", "공존 방안", "윤리적 딜레마 상황", "중요성 인식", "비판적 자세", "윤리적 태도"];
+                total_questions = 12;
+            } else if (subnum === 3) {
+                answers = [0, "새로운 가치", "지속가능발전목표", "지속가능발전목표", "문제 해결 절차", "중요성 및 가치", "협력적", "사회적 영향"];
+                total_questions = 7;
+            } 
+
+            /*  quizform의 각 quiz 요소들을 인덱스를 이용하여 value 를 가져와서 trim() 으로 양옆 빈칸을 제거하고 답변배열과 비교한다.
+                틀리면 correct_answer, 맞으면 wrong_answer 함수를 실행한다. */
+            for (let i = 1; i <= total_questions; i++) {
+                const user_answer = document.quizform['quiz' + i].value.trim();
+                if (user_answer === answers[i]) {
+                    correct_answer(i);
+                } else {
+                    wrong_answer(i);
+                }
+            }
+        }
+
+        /*  정답 보이기를 누르면 실행되는 함수.
+            각 정답배열에서 값을 가져와 quizform을 채우고 테두리를 파란색으로 바꾼다. */
+        function visualize_answers() {
+            let answers = [];
+            if (subnum === 0) {
+                answers = [0, "인간의 지능적인 행동", "탐색과 추론", "인공지능의 원리", "인공지능과 탐색", "지식의 표현과 추론", "문제 해결 사례", "탐색 알고리즘", "추론", "새로운 지식", "필요성과 적용 가능성"];
+                total_questions = 10;
+            } else if (subnum === 1) {
+                answers = [0, "기계학습 기반", "문제 해결에 적합한 데이터", "기계학습 모델", "딥러닝", "인공신경망", "기계학습과 데이터", "기계학습 알고리즘", "인공신경망과 딥러닝", "기계학습을 적용할 문제", "적합한 데이터", "기계학습 알고리즘", "딥러닝", "중요성", "효과성과 효율성"];
+                total_questions = 14;
+            } else if (subnum === 2) {
+                answers = [0, "영향력", "윤리적 문제", "사회 변화", "진로", "윤리", "사회적 문제", "삶과 직업의 양상", "공존 방안", "윤리적 딜레마 상황", "중요성 인식", "비판적 자세", "윤리적 태도"];
+                total_questions = 12;
+            } else if (subnum === 3) {
+                answers = [0, "새로운 가치", "지속가능발전목표", "지속가능발전목표", "문제 해결 절차", "중요성 및 가치", "협력적", "사회적 영향"];
+                total_questions = 7;
+            }
+            for (let i = 1; i <= total_questions; i++) {
+                document.quizform['quiz' + i].value = answers[i];
+                document.quizform['quiz' + i].style.border = "2px solid blue";
+            }
+        }
+
+        // 초기화 버튼을 누르면 리셋과 함께 테두리를 지운다.
+        function reset_quiz() {
+            for (let i = 1; i <= total_questions; i++) {
+                document.quizform['quiz' + i].style.border = "";
+            }
+        }
+
+        // 답변이 맞으면 테두리를 초록색, 틀리면 붉은색으로 변경한다.
+        function correct_answer(a){
+            document.quizform['quiz' + a].style.border = "2px solid green";
+        }
+        function wrong_answer(a){
+            document.quizform['quiz' + a].style.border = "2px solid red";
+        }    
+    </script>
+</body>
+</html>

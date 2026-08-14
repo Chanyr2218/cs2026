@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>2022 교육과정 - 고등학교 - 소프트웨어와 생활 - 내용체계</title>
+    <link rel="stylesheet" href="../../styles.css">
+</head>
+<body>
+    <article class="subject_article">
+        <h3 style="text-align: center;">고등학교 소프트웨어와 생활 내용체계</h3>
+        <nav class="subject_menu">
+            <ul>
+                <li><span class="subs">세상을 변화시키는 소프트웨어</span></li>
+                <li><span class="subs">창작을 지원하는 소프트웨어</span></li>
+                <li><span class="subs">현상을 분석하는 소프트웨어</span></li>
+                <li><span class="subs">모의 실험하는 소프트웨어</span></li>             
+                <li><span class="subs">가치를 창출하는 소프트웨어</span></li>
+            </ul>
+        </nav>
+        <form name ="quizform" id="quizform" method="" action="">
+            <article class="subject_article_area" id="blank">
+                <span style="font-weight: bold;">위의 과목을 클릭해 테스트를 시작하세요</span>
+            </article>
+        </form>
+    </article>
+    <script>
+        const subs = document.getElementsByClassName("subs");
+        let subnum = 0;
+        for (let i = 0; i < subs.length; i++) {
+            subs[i].style.cursor="pointer";
+            subs[i].addEventListener("mouseover", function() {
+                this.style.background = "aqua";
+            });
+
+            subs[i].addEventListener("mouseout", function() {
+                this.style.background = "";
+            });
+            subs[i].onclick = function() {
+                for (let j = 0; j < subs.length; j++) {
+                    subs[j].style.fontSize = "medium";
+                    subs[j].style.color = "black";
+                }
+                subs[i].style.fontSize = "larger";
+                subs[i].style.color = "blue";
+                if (i == 0) {
+                    subnum = 0;
+                    const blank = document.getElementById("blank");
+                    blank.innerHTML= '\
+                        <h4>(1) 세상을 변화시키는 소프트웨어</h4>\
+                        <table class="details" border="1" style="width:100%; border-collapse: collapse;">\
+                            <tr>\
+                                <td rowspan="2" class="category">핵심 아이디어</td>\
+                                <td class="detail" style="border-bottom: 0px;">• 디지털 기술의 발전에 따라 <input type="text" name="quiz1" class="quiz_textbox"></input>는 인간의 삶과 사회 전반을 변화시키고 있다.</td>\
+                            </tr>\
+                            <tr>\
+                                <td class="detail" style="border-top: 0px;">• 학문 분야와 <input type="text" name="quiz2" class="quiz_textbox"></input>은 세상의 문제와 현상을 효과적으로 탐구하고 해결하는 데 도움을 준다.</td>\
+                            </tr>\
+                            <tr>\
+                                <td rowspan="2" class="catedivision" style="text-align: left;"><span style="display: block; text-align: right;">구분</span><br>&nbsp;범주</td><td rowspan="2" class="division">내용 요소</td>\
+                            </tr>\
+                            <tr>\
+                            </tr>\
+                            <tr>\
+                                <td rowspan="2" class="category">지식 • 이해</td>\
+                                <td class="detail" style="border-bottom: 0px;">• <input type="text" name="quiz3" class="quiz_textbox"></input>와 사회 변화</td>\
+                            </tr>\
+                            <tr>\
+                                <td class="detail" style="border-top: 0px;">• <input type="text" name="quiz4" class="quiz_textbox"></input>과 문제 해결</td>\
+                            </tr>\
+                            <tr>\
+                                <td rowspan="3" class="category">과정 • 기능</td>\
+                                <td class="detail" style="border-bottom: 0px;">• 소프트웨어를 통해 <input type="text" name="quiz5" class="quiz_textbox"></input>시킨 사례 탐색하기</td>\
+                            </tr>\
+                            <tr>\
+                                <td class="detail" style="border: 0px;">• 소프트웨어의 발전에 따른 <input type="text" name="quiz6" class="quiz_textbox"></input> 예측하기</td>\
+                            </tr>\
+                            <tr>\
+                                <td class="detail" style="border-top: 0px;">• 소프트웨어와의 융합을 통한 문제 해결이 가능한 사례 탐색하기</td>\
+                            </tr>\
+                            <tr>\
+                                <td rowspan="2" class="category">가치 • 태도</td>\
+                                <td class="detail" style="border-bottom: 0px;">• 문제와 현상을 <input type="text" name="quiz7" class="quiz_textbox"></input>으로 바라보는 자세 </td>\
+                            </tr>\
+                            <tr>\
+                                <td class="detail" style="border-top: 0px;">• 실생활 및 다양한 학문 분야의 <input type="text" name="quiz8" class="quiz_textbox"></input>에 소프트웨어를 적용하는 자세</td>\
+                            </tr>\
+                        </table>\
+                        <input type="button" value="제출" onclick="submit_quiz()"></input>\
+                        <button type="reset" onclick="reset_quiz()">초기화</button>\
+                        <input type="button" value="정답 보이기" onclick="visualize_answers()"></input>\
+                    ';
+                } else if (i == 1) {
+                    subnum = 1;
+                    const blank = document.getElementById("blank");
+                    blank.innerHTML= '\
+                        <h4>(2) 창작을 지원하는 소프트웨어</h4>\
+                        <table class="details" border="1" style="width:100%;">\
+                            <tr>\
+                                <td rowspan="2" class="category">핵심 아이디어</td>\
+                                <td class="detail" style="border-bottom: 0px;">• 다양한 장치와 센서를 소프트웨어를 통해 작품과 결합함으로써 <input type="text" name="quiz1" class="quiz_textbox"></input>을 지원한다.</td>\
+                            </tr>\
+                            <tr>\
+                                <td class="detail" style="border-top: 0px;">• 피지컬 컴퓨팅을 통한 작품 창작은 생각을 <input type="text" name="quiz2" class="quiz_textbox"></input>하고, 문제를 해결하는 데 도움을 준다.</td>\
+                            </tr>\
+                            <tr>\
+                                <td rowspan="2" class="catedivision" style="text-align: left;"><span style="display: block; text-align: right;">구분</span><br>&nbsp;범주</td>\
+                                <td rowspan="2" class="division">내용 요소</td>\
+                            </tr>\
+                            <tr>\
+                            </tr>\
+                            <tr>\
+                                <td rowspan="3" class="category">지식 • 이해</td>\
+                                <td class="detail" style="border-bottom: 0px;">• <input type="text" name="quiz3" class="quiz_textbox"></input> </td>\
+                            </tr>\
+                            <tr>\
+                                <td class="detail" style="border: 0px;">• <input type="text" name="quiz4" class="quiz_textbox"></input></td>\
+                            </tr>\
+                            <tr>\
+                                <td class="detail" style="border-top: 0px;">• <input type="text" name="quiz5" class="quiz_textbox"></input></td>\
+                            </tr>\
+                            <tr>\
+                                <td rowspan="3" class="category">과정 • 기능</td>\
+                                <td class="detail" style="border-bottom: 0px;">• 피지컬 컴퓨팅 시스템의 <input type="text" name="quiz6" class="quiz_textbox"></input>하기</td>\
+                            </tr>\
+                            <tr>\
+                                <td class="detail" style="border: 0px;">• 목적에 맞는 <input type="text" name="quiz7" class="quiz_textbox"></input>하기 </td>\
+                            </tr>\
+                            <tr>\
+                                <td class="detail" style="border-top: 0px;">• 피지컬 컴퓨팅을 통해 작품 구현하기</td>\
+                            </tr>\
+                            <tr>\
+                                <td rowspan="2" class="category">가치 • 태도</td>\
+                                <td class="detail" style="border-bottom: 0px;">• 소프트웨어를 통한 아이디어 표현의 <input type="text" name="quiz8" class="quiz_textbox"></input></td>\
+                            </tr>\
+                            <tr>\
+                                <td class="detail" style="border-top: 0px;">• 다양한 분야에서 활용된 소프트웨어의 <input type="text" name="quiz9" class="quiz_textbox"></input></td>\
+                            </tr>\
+                        </table>\
+                        <input type="button" value="제출" onclick="submit_quiz()"></input>\
+                        <button type="reset" onclick="reset_quiz()">초기화</button>\
+                        <input type="button" value="정답 보이기" onclick="visualize_answers()"></input>\
+                    ';
+                } else if (i == 2) {
+                    subnum = 2;
+                    const blank = document.getElementById("blank");
+                    blank.innerHTML= '\
+                        <h4>(3) 현상을 분석하는 소프트웨어</h4>\
+                        <table class="details" border="1" style="width:100%;">\
+                            <tr>\
+                                <td rowspan="2" class="category">핵심 아이디어</td>\
+                                <td class="detail" style="border-bottom: 0px;">• 데이터를 다루는 소프트웨어는 사회 각 분야에서 발생하는 방대한 데이터를 효율적으로 <input type="text" name="quiz1" class="quiz_textbox"></input>하는 데 활용된다.</td>\
+                            </tr>\
+                            <tr>\
+                                <td class="detail" style="border-top: 0px;">• 데이터 분석은 다양한 분야의 현상을 합리적으로 <input type="text" name="quiz2" class="quiz_textbox"></input>할 수 있도록 도움을 준다.</td>\
+                            </tr>\
+                            <tr>\
+                                <td rowspan="2" class="catedivision" style="text-align: left;"><span style="display: block; text-align: right;">구분</span><br>&nbsp;범주</td>\
+                                <td rowspan="2" class="division">내용 요소</td>\
+                            </tr>\
+                            <tr>\
+                            </tr>\
+                            <tr>\
+                                <td rowspan="2" class="category">지식 • 이해</td>\
+                                <td class="detail" style="border-bottom: 0px;">• <input type="text" name="quiz3" class="quiz_textbox"></input></td>\
+                            </tr>\
+                            <tr>\
+                                <td class="detail" style="border-top: 0px;">• <input type="text" name="quiz4" class="quiz_textbox"></input></td>\
+                            </tr>\
+                            <tr>\
+                                <td rowspan="3" class="category">과정 • 기능</td>\
+                                <td class="detail" style="border-bottom: 0px;">• 다양한 분야의 데이터 탐색하기 </td>\
+                            </tr>\
+                            <tr>\
+                                <td class="detail" style="border: 0px;">• 데이터 처리하고 관리하기</td>\
+                            </tr>\
+                            <tr>\
+                                <td class="detail" style="border-top: 0px;">• 데이터를 분석하여 의미 파악하기 </td>\
+                            </tr>\
+                            <tr>\
+                                <td rowspan="2" class="category">가치 • 태도</td>\
+                                <td class="detail" style="border-bottom: 0px;">• 데이터의 사회적 <input type="text" name="quiz5" class="quiz_textbox"></input></td>\
+                            </tr>\
+                            <tr>\
+                                <td class="detail" style="border-top: 0px;">• 데이터 분석 결과를 <input type="text" name="quiz6" class="quiz_textbox"></input>으로 활용하는 태도 </td>\
+                            </tr>\
+                        </table>\
+                        <input type="button" value="제출" onclick="submit_quiz()"></input>\
+                        <button type="reset" onclick="reset_quiz()">초기화</button>\
+                        <input type="button" value="정답 보이기" onclick="visualize_answers()"></input>\
+                    ';
+                } else if (i == 3) {
+                    subnum = 3;
+                    const blank = document.getElementById("blank");
+                    blank.innerHTML= '\
+                        <h4>(4) 모의 실험하는 소프트웨어</h4>\
+                        <table class="details" border="1" style="width:100%;">\
+                            <tr>\
+                                <td rowspan="2" class="category">핵심 아이디어</td>\
+                                <td class="detail" style="border-bottom: 0px;">• 실제와 비슷한 모형을 소프트웨어로 구현한 <input type="text" name="quiz1" class="quiz_textbox"></input>은 복잡한 문제나 현상의 원리를 탐구하고, 개념을 이해하는 데 도움을 준다.</td>\
+                            </tr>\
+                            <tr>\
+                                <td class="detail" style="border-top: 0px;">• 소프트웨어 시뮬레이션을 통해 실세계에서 실행하기에 어렵거나 불가능한 대상을 <input type="text" name="quiz2" class="quiz_textbox"></input>으로 실행한다.</td>\
+                            </tr>\
+                            <tr>\
+                                <td rowspan="2" class="catedivision" style="text-align: left;"><span style="display: block; text-align: right;">구분</span><br>&nbsp;범주</td><td rowspan="2" class="division">내용 요소</td>\
+                            </tr>\
+                            <tr>\
+                            </tr>\
+                            <tr>\
+                                <td rowspan="3" class="category">지식 • 이해</td>\
+                                <td class="detail" style="border-bottom: 0px;">• 시뮬레이션의 <input type="text" name="quiz3" class="quiz_textbox"></input> </td>\
+                            </tr>\
+                            <tr>\
+                                <td class="detail" style="border: 0px;">• 시뮬레이션 <input type="text" name="quiz4" class="quiz_textbox"></input></td>\
+                            </tr>\
+                            <tr>\
+                                <td class="detail" style="border-top: 0px;">• 시뮬레이션 <input type="text" name="quiz5" class="quiz_textbox"></input></td>\
+                            </tr>\
+                            <tr>\
+                                <td rowspan="3" class="category">과정 • 기능</td>\
+                                <td class="detail" style="border-bottom: 0px;">• 시뮬레이션 프로그램 <input type="text" name="quiz6" class="quiz_textbox"></input></td>\
+                            </tr>\
+                            <tr>\
+                                <td class="detail" style="border: 0px;">• 시뮬레이션 모델 <input type="text" name="quiz7" class="quiz_textbox"></input> </td>\
+                            </tr>\
+                            <tr>\
+                                <td class="detail" style="border-top: 0px;">• 시뮬레이션을 위한 소프트웨어 <input type="text" name="quiz8" class="quiz_textbox"></input></td>\
+                            </tr>\
+                            <tr>\
+                                <td rowspan="2" class="category">가치 • 태도</td>\
+                                <td class="detail" style="border-bottom: 0px;">• 시뮬레이션의 <input type="text" name="quiz9" class="quiz_textbox"></input></td>\
+                            </tr>\
+                            <tr>\
+                                <td class="detail" style="border-top: 0px;">• 소프트웨어를 활용한 현실 세계 모델링에 <input type="text" name="quiz10" class="quiz_textbox"></input></td>\
+                            </tr>\
+                        </table>\
+                        <input type="button" value="제출" onclick="submit_quiz()"></input>\
+                        <button type="reset" onclick="reset_quiz()">초기화</button>\
+                        <input type="button" value="정답 보이기" onclick="visualize_answers()"></input>\
+                    ';
+                } else if (i == 4) {
+                    subnum = 4;
+                    const blank = document.getElementById("blank");
+                    blank.innerHTML= '\
+                        <h4>(5) 가치를 창출하는 소프트웨어</h4>\
+                        <table class="details" border="1" style="width:100%;">\
+                            <tr>\
+                                <td rowspan="2" class="category">핵심 아이디어</td>\
+                                <td class="detail" style="border-bottom: 0px;">• 소프트웨어 스타트업은 창의적인 아이디어를 <input type="text" name="quiz1" class="quiz_textbox"></input>하고, <input type="text" name="quiz2" class="quiz_textbox"></input>를 창출한다.</td>\
+                            </tr>\
+                            <tr>\
+                                <td class="detail" style="border-top: 0px;">• 소프트웨어 스타트업 프로젝트는 <input type="text" name="quiz3" class="quiz_textbox"></input> 문제 해결 과정이 필요하다.</td>\
+                            </tr>\
+                            <tr>\
+                                <td rowspan="2" class="catedivision" style="text-align: left;"><span style="display: block; text-align: right;">구분</span><br>&nbsp;범주</td><td rowspan="2" class="division">내용 요소</td>\
+                            </tr>\
+                            <tr>\
+                            </tr>\
+                            <tr>\
+                                <td rowspan="2" class="category">지식 • 이해</td>\
+                                <td class="detail" style="border-bottom: 0px;">• <input type="text" name="quiz4" class="quiz_textbox"></input> </td>\
+                            </tr>\
+                            <tr>\
+                                <td class="detail" style="border-top: 0px;">• <input type="text" name="quiz5" class="quiz_textbox"></input></td>\
+                            </tr>\
+                            <tr>\
+                                <td rowspan="4" class="category">과정 • 기능</td>\
+                                <td class="detail" style="border-bottom: 0px;">• 소프트웨어 스타트업 사례 탐색하기</td>\
+                            </tr>\
+                            <tr>\
+                                <td class="detail" style="border: 0px;">• <input type="text" name="quiz6" class="quiz_textbox"></input></td>\
+                            </tr>\
+                            <tr>\
+                                <td class="detail" style="border: 0px;">• 스타트업 <input type="text" name="quiz7" class="quiz_textbox"></input> </td>\
+                            </tr>\
+                            <tr>\
+                                <td class="detail" style="border-top: 0px;">• 스타트업 프로젝트에 적합한 <input type="text" name="quiz8" class="quiz_textbox"></input> </td>\
+                            </tr>\
+                            <tr>\
+                                <td rowspan="3" class="category">가치 • 태도</td>\
+                                <td class="detail" style="border-bottom: 0px;">• 소프트웨어와 융합을 통해 <input type="text" name="quiz9" class="quiz_textbox"></input> </td>\
+                            </tr>\
+                            <tr>\
+                                <td class="detail" style="border: 0px;">• <input type="text" name="quiz10" class="quiz_textbox"></input>하는 태도</td>\
+                            </tr>\
+                            <tr>\
+                                <td class="detail" style="border-top: 0px;">• 개발한 소프트웨어의 가치에 대한 <input type="text" name="quiz11" class="quiz_textbox"></input></td>\
+                            </tr>\
+                        </table>\
+                        <input type="button" value="제출" onclick="submit_quiz()"></input>\
+                        <button type="reset" onclick="reset_quiz()">초기화</button>\
+                        <input type="button" value="정답 보이기" onclick="visualize_answers()"></input>\
+                    ';
+                }
+            };
+        }
+
+        document.getElementById('quizform').addEventListener('submit', function(event) {
+            event.preventDefault(); 
+        });
+
+        let total_questions = 0;
+
+        function submit_quiz() {
+            let answers = [];
+            if (subnum === 0) {
+                answers = [0, "소프트웨어", "소프트웨어의 융합", "소프트웨어", "소프트웨어 융합", "세상을 변화", "미래 사회", "소프트웨어의 관점", "문제 해결"];
+                total_questions = 8;
+            } else if (subnum === 1) {
+                answers = [0, "작품의 창작", "현실화", "피지컬 컴퓨팅 도구", "미디어 아트", "웨어러블 장치", "구성 및 작동 원리 분석", "센서와 액추에이터 탐색", "다양성과 유연성", "가치 성찰"];
+                total_questions = 9;
+            } else if (subnum === 2) {
+                answers = [0, "수집, 가공, 분석,", "해석", "데이터 유형별 수집 방법", "데이터 시각화와 분석", "가치 인식", "윤리적"];
+                total_questions = 6;
+            } else if (subnum === 3) {
+                answers = [0, "시뮬레이션", "모의적", "개념과 구성요소", "활용 분야", "모델", "활용하기", "구성하기", "구현하기", "가치 인식", "적극적으로 도전하는 태도"];
+                total_questions = 10;
+            } else if (subnum === 4) {
+                answers = [0, "실제로 구현", "사회적 경제적 가치", "윤리적이고 협력적인", "소프트웨어 스타트업의 개념", "소프트웨어 스타트업 프로젝트", "사용자의 요구 분석하기", "아이디어 표현하기", "소프트웨어 구현하기", "새로운 가치를 창출하는 자세", "협력적으로 문제를 해결하고 공유", "성찰"];
+                total_questions = 11;
+            }            
+            for (let i = 1; i <= total_questions; i++) {
+                const user_answer = document.quizform['quiz' + i].value.trim();
+                if (user_answer === answers[i]) {
+                    correct_answer(i);
+                } else {
+                    wrong_answer(i);
+                }
+            }
+        }
+
+        function visualize_answers() {
+            let answers = [];
+            if (subnum === 0) {
+                answers = [0, "소프트웨어", "소프트웨어의 융합", "소프트웨어", "소프트웨어 융합", "세상을 변화", "미래 사회", "소프트웨어의 관점", "문제 해결"];
+                total_questions = 8;
+            } else if (subnum === 1) {
+                answers = [0, "작품의 창작", "현실화", "피지컬 컴퓨팅 도구", "미디어 아트", "웨어러블 장치", "구성 및 작동 원리 분석", "센서와 액추에이터 탐색", "다양성과 유연성", "가치 성찰"];
+                total_questions = 9;
+            } else if (subnum === 2) {
+                answers = [0, "수집, 가공, 분석,", "해석", "데이터 유형별 수집 방법", "데이터 시각화와 분석", "가치 인식", "윤리적"];
+                total_questions = 6;
+            } else if (subnum === 3) {
+                answers = [0, "시뮬레이션", "모의적", "개념과 구성요소", "활용 분야", "모델", "활용하기", "구성하기", "구현하기", "가치 인식", "적극적으로 도전하는 태도"];
+                total_questions = 10;
+            } else if (subnum === 4) {
+                answers = [0, "실제로 구현", "사회적 경제적 가치", "윤리적이고 협력적인", "소프트웨어 스타트업의 개념", "소프트웨어 스타트업 프로젝트", "사용자의 요구 분석하기", "아이디어 표현하기", "소프트웨어 구현하기", "새로운 가치를 창출하는 자세", "협력적으로 문제를 해결하고 공유", "성찰"];
+                total_questions = 11;
+            }
+            for (let i = 1; i <= total_questions; i++) {
+                document.quizform['quiz' + i].value = answers[i];
+                document.quizform['quiz' + i].style.border = "2px solid blue";
+            }
+        }
+
+        function reset_quiz() {
+            for (let i = 1; i <= total_questions; i++) {
+                document.quizform['quiz' + i].style.border = "";
+            }
+        }
+
+        function correct_answer(a){
+            document.quizform['quiz' + a].style.border = "2px solid green";
+        }
+        function wrong_answer(a){
+            document.quizform['quiz' + a].style.border = "2px solid red";
+        }    
+    </script>                
+</body>
+</html>

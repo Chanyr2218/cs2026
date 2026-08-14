@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <!-- html의 탭 이름 -->
+    <title>2022 개정 정보과 교육과정</title> 
+    <!-- 스타일시트의 위치 -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <!-- 페이지 제목을 헤더 블록에 넣음 -->
+        <h2 class="headerline">2022 개정 정보과 교육과정</h2>
+    </header>
+    <nav>
+        <!-- 메인 네비게이션 바, 이페이지는 main.html임을 알려주도록 bold체로 바꿈 -->
+        <ul>
+            <li id="mainnav1" style="font-weight: bold;"><a href="main.html">Home</a></li>
+            <li id="mainnav2"><a href="./chapter1/chapter1.html">교육과정 공부하기</a></li>
+            <li id="mainnav3"><a href="./chapter2/chapter2.html">교육과정 테스트하기</a></li>
+        </ul>
+    </nav>
+    <!-- 본문 내용이 들어갈 컨테이너 -->
+    <section class="container">
+        <!-- 환영 문구 -->
+        <article class="mainpageArticle">
+            <h3>환영합니다!</h3>
+            <p>이 사이트는 2022 개정 정보과 교육과정 개론을 공부하는 학생들을 위해 만들어졌습니다. </p>
+            <p>내용체계와 성취기준을 공부하고 테스트할 수 있도록 되어있습니다.</p>
+            <p>위쪽 네비게이션 바를 통해 2022 개정 정보과 교육과정을 공부하고 빈칸으로 테스트해보세요.</p>
+        </article>
+    </section>
+    <footer>
+        <!-- 페이지 최하단의 footer -->
+        <p style="text-align: center;"> 웹 프로그래밍 과제로 만든 정보과 교육과정 공부 사이트 입니다.</p>
+    </footer>
+    <script>
+    for (let i = 1; i <= 3; i++) { // 메인 네비게이션의 id를 for문을 이용하여 가져오며 마우스가 오버될떄와 아웃될때 배경을 바꿔주도록 하였다.
+        document.getElementById("mainnav" + i).addEventListener("mouseover", function() {
+            this.style.backgroundColor = "#ddd";
+        });
+        document.getElementById("mainnav" + i).addEventListener("mouseout", function() {
+            this.style.backgroundColor = "";
+        });
+    }
+    </script>
+
+</body>
+</html>
+

@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>2022 교육과정 - 고등학교 - 인공지능 기초 - 성취기준</title>
+    <link rel="stylesheet" href="../../styles.css">
+</head>
+<body>
+    <!-- 보라색 배경 -->
+    <article class="subject_article">
+        <!-- 문서 상단의 현재 어느 페이지인지 알려주는 제목 -->
+        <h3 style="text-align: center;">고등학교 인공지능 기초 성취기준</h3>
+        <!-- 문서 상단에 위치한 내비게이션 바 subs 클래스로 배열형태로 js에서 쓸수 있도록 되어있다. 
+            스타일은 하늘색배경에 원형테두리가 적용되어 있으며 js로 마우스 호버링 동작에 반응하도록 되어있다. 
+            테스트하기에서는 단원 이름을 누르면 각 단원에 맞는 성취기준의 코드와 그 옆에 빈칸이 나오도록 되어있다..
+            단원 이름을 누르면 파란색이 적용되고 글자크기가 커진다.-->
+        <nav class="subject_menu">
+            <ul>
+                <li><span class="subs">인공지능의 이해</span></li>
+                <li><span class="subs">인공지능과 학습</span></li>
+                <li><span class="subs">인공지능의 사회적 영향</span></li>
+                <li><span class="subs">인공지능 프로젝트</span></li>
+            </ul>
+        </nav>
+        <!-- form을 이용해서 quizform 이라는 이름과 id로 버튼으로 내용을 관리할 수 있도록 되어있다.
+            처음 화면을 로딩하면 내비게이션바를 눌러 테스트를 시작하라는 안내문구가 나와있다. -->
+        <article class="subject_article_area_qualify" id="blank">
+            <!-- 테스트 내용이 들어갈 박스이다. 처음에는 안내문구가 들어있다. -->
+            <span style="font-weight: bold;">위의 과목을 클릭해 테스트를 시작하세요</span>
+        </article>
+    </article>
+    <script>
+        // 내비게이션 바의 단원을 배열 형식으로 가져온다.
+        const subs = document.getElementsByClassName("subs");
+        // 몇번째 단원인지 알려주는 subnum을 0으로 초기화 한다.
+        let subnum = 0;
+        for (let i = 0; i < subs.length; i++) {
+            // 단원이름 위에 커서를 올리면 포인터모양으로 바꾼다.
+            subs[i].style.cursor="pointer";
+            // 단원이름 위에 커서를 올리거나 내릴 때 배경을 아쿠아로 바꾸거나 지운다.
+            subs[i].addEventListener("mouseover", function() {
+                this.style.background = "aqua";
+            });
+
+            subs[i].addEventListener("mouseout", function() {
+                this.style.background = "";
+            });
+
+            // 단원 이름을 클릭하면 수행되는 동작이다.
+            subs[i].onclick = function() {
+                for (let j = 0; j < subs.length; j++) { // 클릭하지 않은 단원명을 중간크기에 흑색 스타일을 적용한다.
+                    subs[j].style.fontSize = "medium";
+                    subs[j].style.color = "black";
+                }
+                subs[i].style.fontSize = "larger"; // 클릭한 단원명의 크기를 늘리고 파란색 스타일을 적용한다.
+                subs[i].style.color = "blue";
+                if (i == 0) { // 첫번째 단원을 클릭하면 일어나는 일이다.
+                    subnum = 0; // 현재 첫번째 단원임을 알수 있도록 subnum에 인덱스를 저장해둔다.
+                    /*  테스트내용이 들어갈 곳을 id로 받아온다. 아래의 내용이 들어가게 되며,
+                        해당 단원의 성취기준의 코드가 나열되고 각각의 옆에 성취기준을 적을 수 있는 빈칸이 생성된다.
+                        정답확인 버튼을 누르면 빈칸의 아래에 숨겨져있던 정답이 드러나게 되고
+                        정답삭제 버튼을 누르면 정답이 다시 사라진다.*/
+                    const blank = document.getElementById("blank");
+                    blank.innerHTML= '\
+                    <p> [12인기01-01] <input type="text" name="quiz" class="quiz_qualify_textbox"></input><br>\
+                        <span class="answers3">인공지능의 지능적 판단에 대한 이해를 바탕으로 인공지능을 활용한 실생활 및 다양한 학문 분야의 문제 해결 사례를 비교⋅분석한다.</span><br>\
+                    </p>\
+                    <p> [12인기01-02] <input type="text" name="quiz" class="quiz_qualify_textbox"></input><br>\
+                        <span class="answers3">인공지능에서 탐색의 중요성을 이해하고 문제 해결을 위한 탐색 과정을 설계한다.</span><br>\
+                    </p>\
+                    <p> [12인기01-03] <input type="text" name="quiz" class="quiz_qualify_textbox"></input><br>\
+                        <span class="answers3">맹목적 탐색과 정보 이용 탐색의 차이를 중심으로 지능적 탐색의 원리를 파악한다.</span><br>\
+                    </p>\
+                    <p> [12인기01-04] <input type="text" name="quiz" class="quiz_qualify_textbox"></input><br>\
+                        <span class="answers3">지능적 탐색이 필요한 문제를 찾아보고 문제 해결을 위해 정보 이용 탐색 알고리즘을 적용한다.</span><br>\
+                    </p>\
+                    <p> [12인기01-05] <input type="text" name="quiz" class="quiz_qualify_textbox"></input><br>\
+                        <span class="answers3">규칙과 사실을 활용하여 지식을 표현하고, 새로운 지식을 추론하여 생성한다.</span><br>\
+                    </p>\
+                    <input type="button" value="정답확인" onclick="show_answer()"></input>\
+                    <input type="button" value="정답삭제" onclick="hide_answer()"></input>\
+                    ';
+                }
+                else if (i == 1) {
+                    subnum = 1;
+                    const blank = document.getElementById("blank");
+                    blank.innerHTML= '\
+                    <p> [12인기02-01] <input type="text" name="quiz" class="quiz_qualify_textbox"></input><br>\
+                        <span class="answers3">기계학습을 적용할 문제를 정의하고, 문제 해결에 필요한 데이터를 선정하여 수집한다.</span><br>\
+                    </p>\
+                    <p> [12인기02-02] <input type="text" name="quiz" class="quiz_qualify_textbox"></input><br>\
+                        <span class="answers3">수집한 데이터를 가공하여 핵심 속성을 추출한다.</span><br>\
+                    </p>\
+                    <p> [12인기02-03] <input type="text" name="quiz" class="quiz_qualify_textbox"></input><br>\
+                        <span class="answers3">문제 해결에 적합한 기계학습의 유형과 알고리즘을 선정한다.</span><br>\
+                    </p>\
+                    <p> [12인기02-04] <input type="text" name="quiz" class="quiz_qualify_textbox"></input><br>\
+                        <span class="answers3">훈련 데이터를 이용하여 학습을 진행하고, 테스트 데이터를 사용하여 성능을 평가한다.</span><br>\
+                    </p>\
+                    <p> [12인기02-05] <input type="text" name="quiz" class="quiz_qualify_textbox"></input><br>\
+                        <span class="answers3">인공신경망과 딥러닝의 특성에 대한 이해를 바탕으로 활용 분야를 탐색한다.</span><br>\
+                    </p>\
+                    <p> [12인기02-06] <input type="text" name="quiz" class="quiz_qualify_textbox"></input><br>\
+                        <span class="answers3">딥러닝을 활용하여 실생활 및 다양한 학문 분야의 문제를 해결하고, 성능을 평가한다.</span><br>\
+                    </p>\
+                    <input type="button" value="정답확인" onclick="show_answer()"></input>\
+                    <input type="button" value="정답삭제" onclick="hide_answer()"></input>\
+                    ';
+                }
+                else if (i == 2) {
+                    subnum = 2;
+                    const blank = document.getElementById("blank");
+                    blank.innerHTML= '\
+                    <p> [12인기03-01] <input type="text" name="quiz" class="quiz_qualify_textbox"></input><br>\
+                        <span class="answers3">인공지능의 발전으로 인한 사회 변화를 살펴보고, 인공지능으로 해결할 수 있는 사회적 문제를 분석한다.</span><br>\
+                    </p>\
+                    <p> [12인기03-02] <input type="text" name="quiz" class="quiz_qualify_textbox"></input><br>\
+                        <span class="answers3">인공지능에 의해 변화하는 인간의 삶과 직업의 양상에 대해 이해하고 진로를 탐색한다.</span><br>\
+                    </p>\
+                    <p> [12인기03-03] <input type="text" name="quiz" class="quiz_qualify_textbox"></input><br>\
+                        <span class="answers3">인공지능에 대한 비판적 자세를 바탕으로 인공지능과 인간의 공존 방안을 도출한다.</span><br>\
+                    </p>\
+                    <p> [12인기03-04] <input type="text" name="quiz" class="quiz_qualify_textbox"></input><br>\
+                        <span class="answers3">인공지능의 활용사례와 윤리적 딜레마 상황을 인공지능 윤리 관점에서 분석한다.</span><br>\
+                    </p>\
+                    <input type="button" value="정답확인" onclick="show_answer()"></input>\
+                    <input type="button" value="정답삭제" onclick="hide_answer()"></input>\
+                    ';
+                }
+                else if (i == 3) {
+                    subnum = 3;
+                    const blank = document.getElementById("blank");
+                    blank.innerHTML= '\
+                    <p> [12인기04-01] <input type="text" name="quiz" class="quiz_qualify_textbox"></input><br>\
+                        <span class="answers3">지속가능발전목표를 해결하기 위해 인공지능을 적용할 수 있는 방안을 탐색하고, 인공지능 프로젝트 활동에 적합한 주제를 도출한다.</span><br>\
+                    </p>\
+                    <p> [12인기04-02] <input type="text" name="quiz" class="quiz_qualify_textbox"></input><br>\
+                        <span class="answers3">인공지능 문제 해결 과정에 기반하여 프로젝트 수행 계획을 구안한다.</span><br>\
+                    </p>\
+                    <p> [12인기04-03] <input type="text" name="quiz" class="quiz_qualify_textbox"></input><br>\
+                        <span class="answers3">인공지능 프로젝트를 수행하는 과정에서 협력적인 문제 해결 자세를 바탕으로 인공지능 소프트웨어를 개발한다.</span><br>\
+                    </p>\
+                    <p> [12인기04-04] <input type="text" name="quiz" class="quiz_qualify_textbox"></input><br>\
+                        <span class="answers3">인공지능의 사회적 영향을 고려하여 인공지능 소프트웨어를 개발하고, 평가 결과를 반영하여 성능을 개선한다.</span><br>\
+                    </p>\
+                    <input type="button" value="정답확인" onclick="show_answer()"></input>\
+                    <input type="button" value="정답삭제" onclick="hide_answer()"></input>\
+                    ';
+                }
+            };
+
+            /*  숨겨져있던 정답을 드러내는 함수이다.
+                answers3 클래스가 적용된 태그가 드러나게 된다.*/
+            function show_answer() {
+                const answers3 = document.getElementsByClassName("answers3");
+                for (let k = 0; k < answers3.length; k++) {
+                    answers3[k].style.visibility = "visible";
+                }
+            }
+
+            /*  정답을 다시 숨기는 함수이다.
+                answers3 클래스가 적용된 태그가 숨겨지게 된다.*/
+            function hide_answer() {
+                const answers3 = document.getElementsByClassName("answers3");
+                for (let k = 0; k < answers3.length; k++) {
+                    answers3[k].style.visibility = "hidden";
+                }
+            }
+        }
+    </script>
+</body>
+</html>

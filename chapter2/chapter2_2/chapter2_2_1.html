@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>2022 교육과정 - 고등학교 - 정보 - 내용체계</title>
+    <link rel="stylesheet" href="../../styles.css">
+</head>
+<body>
+    <article class="subject_article">
+        <h3 style="text-align: center;">고등학교 정보 내용체계</h3>
+        <nav class="subject_menu">
+            <ul>
+                <li><span class="subs">컴퓨팅 시스템</span></li>
+                <li><span class="subs">데이터</span></li>
+                <li><span class="subs">알고리즘과 프로그래밍</span></li>
+                <li><span class="subs">인공지능</span></li>
+                <li><span class="subs">디지털 문화</span></li>
+            </ul>
+        </nav>
+        <form name ="quizform" id="quizform" method="" action="">
+            <article class="subject_article_area" id="blank">
+                <span style="font-weight: bold;">위의 과목을 클릭해 테스트를 시작하세요</span>
+            </article>
+        </form>
+    </article>
+    <script>
+        const subs = document.getElementsByClassName("subs");
+        let subnum = 0;
+        for (let i = 0; i < subs.length; i++) {
+            subs[i].style.cursor="pointer";
+            subs[i].addEventListener("mouseover", function() {
+                this.style.background = "aqua";
+            });
+
+            subs[i].addEventListener("mouseout", function() {
+                this.style.background = "";
+            });
+            subs[i].onclick = function() {
+                for (let j = 0; j < subs.length; j++) {
+                    subs[j].style.fontSize = "medium";
+                    subs[j].style.color = "black";
+                }
+                subs[i].style.fontSize = "larger";
+                subs[i].style.color = "blue";
+                if (i == 0) {
+                    subnum = 0;
+                    const blank = document.getElementById("blank");
+                    blank.innerHTML= '\
+                        <h4>(1) 컴퓨팅 시스템</h4>\
+                        <table class="details" border="1" style="width:100%; border-collapse: collapse;">\
+                            <tr>\
+                                <td rowspan="2" class="category">핵심 아이디어</td>\
+                                <td class="detail" style="border-bottom: 0px;">• <input type="text" name="quiz1" class="quiz_textbox"></input>와 <input type="text" name="quiz2" class="quiz_textbox"></input> 의 유기적 연결을 통해 동작하는 컴퓨팅 시스템은 사회적, 기술적 가치를 높이는 데 활용된다.</td>\
+                            </tr>\
+                            <tr>\
+                                <td class="detail" style="border-top: 0px;">• <input type="text" name="quiz3" class="quiz_textbox"></input>는 여러 개의 컴퓨팅 시스템 간 연결의 원리를 파악하고, <input type="text" name="quiz4" class="quiz_textbox"></input>을 통해 데이터 공유를 가능하게 한다.</td>\
+                            </tr>\
+                            <tr>\
+                                <td rowspan="2" class="catedivision" style="text-align: left;"><span style="display: block; text-align: right;">구분</span><br>&nbsp;범주</td><td rowspan="2" class="division">내용 요소</td>\
+                            </tr>\
+                            <tr>\
+                            </tr>\
+                            <tr>\
+                                <td rowspan="2" class="category">지식 • 이해</td>\
+                                <td class="detail" style="border-bottom: 0px;">• <input type="text" name="quiz5" class="quiz_textbox"></input>의 구성</td>\
+                            </tr>\
+                            <tr>\
+                                <td class="detail" style="border-top: 0px;">• <input type="text" name="quiz6" class="quiz_textbox"></input>의 구성 및 동작 원리</td>\
+                            </tr>\
+                            <tr>\
+                                <td rowspan="2" class="category">과정 • 기능</td>\
+                                <td class="detail" style="border-bottom: 0px;">• 컴퓨팅 시스템 간 <input type="text" name="quiz7" class="quiz_textbox"></input>를 구성하고 공유 설정하기</td>\
+                            </tr>\
+                            <tr>\
+                                <td class="detail" style="border-top: 0px;">• <input type="text" name="quiz8" class="quiz_textbox"></input>에 적합한 사물인터넷 시스템 설계하기</td>\
+                            </tr>\
+                            <tr>\
+                                <td rowspan="2" class="category">가치 • 태도</td>\
+                                <td class="detail" style="border-bottom: 0px;">• <input type="text" name="quiz9" class="quiz_textbox"></input>을 위해 네트워크 환경을 적극적으로 활용하는 자세</td>\
+                            </tr>\
+                            <tr>\
+                                <td class="detail" style="border-top: 0px;">• 사물인터넷 시스템으로 인한 <input type="text" name="quiz10" class="quiz_textbox"></input>에 대처하는 능동적 태도도</td>\
+                            </tr>\
+                        </table>\
+                        <input type="button" value="제출" onclick="submit_quiz()"></input>\
+                        <button type="reset" onclick="reset_quiz()">초기화</button>\
+                        <input type="button" value="정답 보이기" onclick="visualize_answers()"></input>\
+                    ';
+                } else if (i == 1) {
+                    subnum = 1;
+                    const blank = document.getElementById("blank");
+                    blank.innerHTML= '\
+                        <h4>(2) 데이터</h4>\
+                        <table class="details" border="1" style="width:100%;">\
+                            <tr>\
+                                <td rowspan="3" class="category">핵심 아이디어</td>\
+                                <td class="detail" style="border-bottom: 0px;">• 데이터의 <input type="text" name="quiz1" class="quiz_textbox"></input>과 <input type="text" name="quiz2" class="quiz_textbox"></input>는 데이터를 효율적으로 관리하고 보호하는 데 도움을 준다.</td>\
+                            </tr>\
+                            <tr>\
+                                <td class="detail" style="border: 0px;">• 수집된 데이터 간의 관계를 파악하여 <input type="text" name="quiz3" class="quiz_textbox"></input>하는 것은 데이터를 통해 새로운 지식을 찾는 데 도움을 준다.</td>\
+                            </tr>\
+                            <tr>\
+                                <td class="detail" style="border-top: 0px;">• <input type="text" name="quiz4" class="quiz_textbox"></input>을 활용하여 데이터를 수집, 처리, 관리하는 과정에서 <input type="text" name="quiz5" class="quiz_textbox"></input>를 고려해서 수행해야 올바른 결과가 도출된다.</td>\
+                            </tr>\
+                            <tr>\
+                                <td rowspan="2" class="catedivision" style="text-align: left;"><span style="display: block; text-align: right;">구분</span><br>&nbsp;범주</td>\
+                                <td rowspan="2" class="division">내용 요소</td>\
+                            </tr>\
+                            <tr>\
+                            </tr>\
+                            <tr>\
+                                <td rowspan="2" class="category">지식 • 이해</td>\
+                                <td class="detail" style="border-bottom: 0px;">• 디지털 데이터 <input type="text" name="quiz6" class="quiz_textbox"></input></td>\
+                            </tr>\
+                            <tr>\
+                                <td class="detail" style="border-top: 0px;">• <input type="text" name="quiz7" class="quiz_textbox"></input>과 분석</td>\
+                            </tr>\
+                            <tr>\
+                                <td rowspan="3" class="category">과정 • 기능</td><td class="detail" style="border-bottom: 0px;">• 디지털 데이터 압축의 <input type="text" name="quiz8" class="quiz_textbox"></input>을 분석하고 평가하기</td>\
+                            </tr>\
+                            <tr>\
+                                <td class="detail" style="border: 0px;">• <input type="text" name="quiz9" class="quiz_textbox"></input> 활용사례 탐색하기</td>\
+                            </tr>\
+                            <tr>\
+                                <td class="detail" style="border-top: 0px;">• 빅데이터 기술을 활용하여 데이터를 <input type="text" name="quiz10" class="quiz_textbox"></input></td>\
+                            </tr>\
+                            <tr>\
+                                <td rowspan="3" class="category">가치 • 태도</td><td class="detail" style="border-bottom: 0px;">• 효율적인 데이터 표현의 <input type="text" name="quiz11" class="quiz_textbox"></input>을 활용하려는 자세</td>\
+                            </tr>\
+                            <tr>\
+                                <td class="detail" style="border: 0px;">• 데이터를 안전하게 <input type="text" name="quiz12" class="quiz_textbox"></input> 태도</td>\
+                            </tr>\
+                            <tr>\
+                                <td class="detail" style="border-top: 0px;">• 빅데이터 분석의 가치에 대한 사회적, 윤리적 측면의 성찰</td>\
+                            </tr>\
+                        </table>\
+                        <input type="button" value="제출" onclick="submit_quiz()"></input>\
+                        <button type="reset" onclick="reset_quiz()">초기화</button>\
+                        <input type="button" value="정답 보이기" onclick="visualize_answers()"></input>\
+                    ';
+                } else if (i == 2) {
+                    subnum = 2;
+                    const blank = document.getElementById("blank");
+                    blank.innerHTML= '\
+                        <h4>(3) 알고리즘과 프로그래밍</h4>\
+                        <table class="details" border="1" style="width:100%;">\
+                            <tr>\
+                                <td rowspan="3" class="category">핵심 아이디어</td><td class="detail" style="border-bottom: 0px;">• 문제를 효율적으로 해결하기 위해서는 문제를 <input type="text" name="quiz1" class="quiz_textbox"></input>하고, 프로그래밍을 위한 <input type="text" name="quiz2" class="quiz_textbox"></input>을 설계한다.</td>\
+                            </tr>\
+                            <tr>\
+                                <td class="detail" style="border: 0px;">• <input type="text" name="quiz3" class="quiz_textbox"></input>을 하기 위해 문제 해결에 필요한 데이터 간의 관계를 분석하고, 정의한다.</td>\
+                            </tr>\
+                            <tr>\
+                                <td class="detail" style="border-top: 0px;">• 프로그래밍을 통한 자동화는 다양한 학문 분야의 문제를 해결하는 데 도움을 준다.</td>\
+                            </tr>\
+                            <tr>\
+                                <td rowspan="2" class="catedivision" style="text-align: left;"><span style="display: block; text-align: right;">구분</span><br>&nbsp;범주</td>\
+                                <td rowspan="2" class="division">내용 요소</td>\
+                            </tr>\
+                            <tr>\
+                            </tr>\
+                            <tr>\
+                                <td rowspan="7" class="category">지식 • 이해</td><td class="detail" style="border-bottom: 0px;">• <input type="text" name="quiz4" class="quiz_textbox"></input></td>\
+                            </tr>\
+                            <tr>\
+                                <td class="detail" style="border: 0px;">• <input type="text" name="quiz5" class="quiz_textbox"></input></td>\
+                            </tr>\
+                            <tr>\
+                                <td class="detail" style="border: 0px;">• <input type="text" name="quiz6" class="quiz_textbox"></input></td>\
+                            </tr>\
+                            <tr>\
+                                <td class="detail" style="border: 0px;">• <input type="text" name="quiz7" class="quiz_textbox"></input></td>\
+                            </tr>\
+                            <tr>\
+                                <td class="detail" style="border: 0px;">• <input type="text" name="quiz8" class="quiz_textbox"></input></td>\
+                            </tr>\
+                            <tr>\
+                                <td class="detail" style="border: 0px;">• <input type="text" name="quiz9" class="quiz_textbox"></input>의 응용</td>\
+                            </tr>\
+                            <tr>\
+                                <td class="detail" style="border-top: 0px;">• <input type="text" name="quiz10" class="quiz_textbox"></input></td>\
+                            </tr>\
+                            <tr>\
+                                <td rowspan="5" class="category">과정 • 기능</td>\
+                                <td class="detail" style="border-bottom: 0px;">• 문제를 <input type="text" name="quiz11" class="quiz_textbox"></input>하기</td>\
+                            </tr>\
+                            <tr>\
+                                <td class="detail" style="border: 0px;">• 알고리즘의 수행 과정 및 <input type="text" name="quiz12" class="quiz_textbox"></input> 비교⋅분석하기</td>\
+                            </tr>\
+                            <tr>\
+                                <td class="detail" style="border: 0px;">• 문제 해결에 적합한 <input type="text" name="quiz13" class="quiz_textbox"></input>를 활용하여 프로그램 작성하기</td>\
+                            </tr>\
+                            <tr>\
+                                <td class="detail" style="border: 0px;">• 복잡한 문제를 해결하기 위해 <input type="text" name="quiz14" class="quiz_textbox"></input>를 복합적으로 활용하기</td>\
+                            </tr>\
+                            <tr>\
+                                <td class="detail" style="border-top: 0px;">• 클래스를 정의하고 인스턴스를 생성하여 문제 해결에 적합한 <input type="text" name="quiz15" class="quiz_textbox"></input>를 구현하기</td>\
+                            </tr>\
+                            <tr>\
+                                <td rowspan="4" class="category">가치 • 태도</td><td class="detail" style="border-bottom: 0px;">• 문제 해결 모델을 구성하고 적극적으로 표현하는 자세</td>\
+                            </tr>\
+                            <tr>\
+                                <td class="detail" style="border: 0px;">• 알고리즘 효율의 가치와 영향력을 인식하고 적극적으로 <input type="text" name="quiz16" class="quiz_textbox"></input>하는 태도</td>\
+                            </tr>\
+                            <tr>\
+                                <td class="detail" style="border: 0px;">• 다양한 학문 분야의 문제 해결을 위해 설계한 알고리즘을 프로그램으로 구현하는 <input type="text" name="quiz17" class="quiz_textbox"></input> 자세</td>\
+                            </tr>\
+                            <tr>\
+                                <td class="detail" style="border-top: 0px;">• 디지털 사회의 민주시민으로서 <input type="text" name="quiz18" class="quiz_textbox"></input>의 중요성을 인식하는 자세</td>\
+                            </tr>\
+                        </table>\
+                        <input type="button" value="제출" onclick="submit_quiz()"></input>\
+                        <button type="reset" onclick="reset_quiz()">초기화</button>\
+                        <input type="button" value="정답 보이기" onclick="visualize_answers()"></input>\
+                    ';
+                } else if (i == 3) {
+                    subnum = 3;
+                    const blank = document.getElementById("blank");
+                    blank.innerHTML= '\
+                        <h4>(4) 인공지능</h4>\
+                        <table class="details" border="1" style="width:100%;">\
+                            <tr>\
+                                <td rowspan="2" class="category">핵심 아이디어</td><td class="detail" style="border-bottom: 0px;">• <input type="text" name="quiz1" class="quiz_textbox"></input>는 외부와의 상호 작용을 통해 기존에 해결할 수 없었던 복잡하고 어려운 문제를 해결하는 데 활용된다.</td>\
+                            </tr>\
+                            <tr>\
+                                <td class="detail" style="border-top: 0px;">• <input type="text" name="quiz2" class="quiz_textbox"></input>의 인공지능을 구현하기 위해서는 문제 해결에 적합한 데이터와 <input type="text" name="quiz3" class="quiz_textbox"></input>을 활용한다.</td>\
+                            </tr>\
+                            <tr>\
+                                <td rowspan="2" class="catedivision" style="text-align: left;"><span style="display: block; text-align: right;">구분</span><br>&nbsp;범주</td><td rowspan="2" class="division">내용 요소</td>\
+                            </tr>\
+                            <tr>\
+                            </tr>\
+                            <tr>\
+                                <td rowspan="2" class="category">지식 • 이해</td><td class="detail" style="border-bottom: 0px;">• <input type="text" name="quiz4" class="quiz_textbox"></input>의 역할</td>\
+                            </tr>\
+                            <tr>\
+                                <td class="detail" style="border-top: 0px;">• <input type="text" name="quiz5" class="quiz_textbox"></input></td>\
+                            </tr>\
+                            <tr>\
+                                <td rowspan="2" class="category">과정 • 기능</td><td class="detail" style="border-bottom: 0px;">• 인공지능 제품이나 서비스에서 지능 에이전트의 <input type="text" name="quiz6" class="quiz_textbox"></input> 탐색하기</td>\
+                            </tr>\
+                            <tr>\
+                                <td class="detail" style="border-top: 0px;">• 기계학습으로 해결할 수 있는 <input type="text" name="quiz7" class="quiz_textbox"></input> 비교하기</td>\
+                            </tr>\
+                            <tr>\
+                                <td rowspan="2" class="category">가치 • 태도</td><td class="detail" style="border-bottom: 0px;">• 인간과 인공지능의 관계에 대한 <input type="text" name="quiz8" class="quiz_textbox"></input></td>\
+                            </tr>\
+                            <tr>\
+                                <td class="detail" style="border-top: 0px;">• <input type="text" name="quiz9" class="quiz_textbox"></input>를 해결하기 위해 기계학습을 적극적으로 활용하는 자세</td>\
+                            </tr>\
+                        </table>\
+                        <input type="button" value="제출" onclick="submit_quiz()"></input>\
+                        <button type="reset" onclick="reset_quiz()">초기화</button>\
+                        <input type="button" value="정답 보이기" onclick="visualize_answers()"></input>\
+                    ';
+                } else if (i == 4) {
+                    subnum = 4;
+                    const blank = document.getElementById("blank");
+                    blank.innerHTML= '\
+                        <h4>(5) 디지털 문화</h4>\
+                        <table class="details" border="1" style="width:100%;">\
+                            <tr>\
+                                <td rowspan="2" class="category">핵심 아이디어</td><td class="detail" style="border-bottom: 0px;">• 디지털 세상에서의 직업이나 진로는 <input type="text" name="quiz1" class="quiz_textbox"></input>에 따라 변화되므로, <input type="text" name="quiz2" class="quiz_textbox"></input>의 관계를 파악하는 것이 중요하다.</td>\
+                            </tr>\
+                            <tr>\
+                                <td class="detail" style="border-top: 0px;">• 디지털 사회를 안전하게 살아가기 위해서는 <input type="text" name="quiz3" class="quiz_textbox"></input>와 <input type="text" name="quiz4" class="quiz_textbox"></input>을 우리 모두가 지켜야 한다.</td>\
+                            </tr>\
+                            <tr>\
+                                <td rowspan="2" class="catedivision" style="text-align: left;"><span style="display: block; text-align: right;">구분</span><br>&nbsp;범주</td><td rowspan="2" class="division">내용 요소</td>\
+                            </tr>\
+                            <tr>\
+                            </tr>\
+                            <tr>\
+                                <td rowspan="2" class="category">지식 • 이해</td><td class="detail" style="border-bottom: 0px;">• 디지털 사회와 <input type="text" name="quiz5" class="quiz_textbox"></input></td>\
+                            </tr>\
+                            <tr>\
+                                <td class="detail" style="border-top: 0px;">• <input type="text" name="quiz6" class="quiz_textbox"></input></td>\
+                            </tr>\
+                            <tr>\
+                                <td rowspan="2" class="category">과정 • 기능</td><td class="detail" style="border-bottom: 0px;">• 디지털 기술의 발전에 따른 <input type="text" name="quiz7" class="quiz_textbox"></input>와 연계하여 진로설계하기</td>\
+                            </tr>\
+                            <tr>\
+                                <td class="detail" style="border-top: 0px;">• <input type="text" name="quiz8" class="quiz_textbox"></input>와 <input type="text" name="quiz9" class="quiz_textbox"></input>의 적용이 필요한 문제를 발견하고 해결 방법 적용하기</td>\
+                            </tr>\
+                            <tr>\
+                                <td rowspan="2" class="category">가치 • 태도</td><td class="detail" style="border-bottom: 0px;">• 미래 사회의 발전 방향에 대해 예측하고 통찰하는 자세</td>\
+                            </tr>\
+                            <tr>\
+                                <td class="detail" style="border-top: 0px;">• <input type="text" name="quiz10" class="quiz_textbox"></input></td>\
+                            </tr>\
+                        </table>\
+                        <input type="button" value="제출" onclick="submit_quiz()"></input>\
+                        <button type="reset" onclick="reset_quiz()">초기화</button>\
+                        <input type="button" value="정답 보이기" onclick="visualize_answers()"></input>\
+                    ';
+                }
+            };
+        }
+
+        document.getElementById('quizform').addEventListener('submit', function(event) {
+            event.preventDefault(); 
+        });
+
+        let total_questions = 0;
+
+        function submit_quiz() {
+            let answers = [];
+            if (subnum === 0) {
+                answers = [0, "하드웨어", "소프트웨어", "네트워크", "통신", "네트워크", "사물인터넷 시스템", "네트워크", "문제 해결", "협력적 의사 소통", "사회 변화"];
+                total_questions = 10;
+            } else if (subnum === 1) {
+                answers = [0, "압축", "암호화", "구조화", "빅데이터 기술", "윤리적인 문제", "압축과 암호화", "빅데이터 개념", "효율성", "암호화", "분석하고 시각화하기", "긍정적 측면", "관리하고 보호하는"];
+                total_questions = 12;
+            } else if (subnum === 2) {
+                answers = [0, "추상화", "알고리즘", "데이터 모델링", "문제 분해와 모델링", "정렬, 탐색 알고리즘", "자료형", "표준입출력과 파일입출력", "다차원 데이터 활용", "제어 구조", "클래스와 인스턴스", "분해하고 모델링", "효율성", "자료형과 입출력 구조", "제어 구조와 다차원 데이터 구조", "객체", "탐구", "실천적", "협력적 문제 해결력"];
+                total_questions = 18;
+            } else if (subnum === 3) {
+                answers = [0, "지능 에이전트", "기계학습 기반", "기계학습 모델", "지능 에이전트", "기계학습의 개념과 유형", "역할", "문제의 유형", "올바른 인식", "사회문제"];
+                total_questions = 9;
+            } else if (subnum === 4) {
+                answers = [0, "기술의 발전", "기술과 사회 변화", "정보 보호", "정보보안의 규칙", "진로", "정보 보호와 보안", "사회 변화", "정보 보호", "보안 기술", "올바른 정보 보호 및 보안 의식"];
+                total_questions = 10;
+            }
+            for (let i = 1; i <= total_questions; i++) {
+                const user_answer = document.quizform['quiz' + i].value.trim();
+                if (user_answer === answers[i]) {
+                    correct_answer(i);
+                } else {
+                    wrong_answer(i);
+                }
+            }
+        }
+        
+        function visualize_answers() {
+            let answers = [];
+            if (subnum === 0) {
+                answers = [0, "하드웨어", "소프트웨어", "네트워크", "통신", "네트워크", "사물인터넷 시스템", "네트워크", "문제 해결", "협력적 의사 소통", "사회 변화"];
+                total_questions = 10;
+            } else if (subnum === 1) {
+                answers = [0, "압축", "암호화", "구조화", "빅데이터 기술", "윤리적인 문제", "압축과 암호화", "빅데이터 개념", "효율성", "암호화", "분석하고 시각화하기", "긍정적 측면", "관리하고 보호하는"];
+                total_questions = 12;
+            } else if (subnum === 2) {
+                answers = [0, "추상화", "알고리즘", "데이터 모델링", "문제 분해와 모델링", "정렬, 탐색 알고리즘", "자료형", "표준입출력과 파일입출력", "다차원 데이터 활용", "제어 구조", "클래스와 인스턴스", "분해하고 모델링", "효율성", "자료형과 입출력 구조", "제어 구조와 다차원 데이터 구조", "객체", "탐구", "실천적", "협력적 문제 해결력"];
+                total_questions = 18;
+            } else if (subnum === 3) {
+                answers = [0, "지능 에이전트", "기계학습 기반", "기계학습 모델", "지능 에이전트", "기계학습의 개념과 유형", "역할", "문제의 유형", "올바른 인식", "사회문제"];
+                total_questions = 9;
+            } else if (subnum === 4) {
+                answers = [0, "기술의 발전", "기술과 사회 변화", "정보 보호", "정보보안의 규칙", "진로", "정보 보호와 보안", "사회 변화", "정보 보호", "보안 기술", "올바른 정보 보호 및 보안 의식"];
+                total_questions = 10;
+            }
+            for (let i = 1; i <= total_questions; i++) {
+                document.quizform['quiz' + i].value = answers[i];
+                document.quizform['quiz' + i].style.border = "2px solid blue";
+            }
+        }
+
+        function reset_quiz() {
+            for (let i = 1; i <= total_questions; i++) {
+                document.quizform['quiz' + i].style.border = "";
+            }
+        }
+
+        function correct_answer(a){
+            document.quizform['quiz' + a].style.border = "2px solid green";
+        }
+        function wrong_answer(a){
+            document.quizform['quiz' + a].style.border = "2px solid red";
+        }                    
+    </script>
+</body>
+</html>

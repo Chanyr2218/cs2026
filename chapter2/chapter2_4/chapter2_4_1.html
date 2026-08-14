@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>2022 교육과정 - 고등학교 - 데이터 과학 - 내용체계</title>
+    <link rel="stylesheet" href="../../styles.css">
+</head>
+<body>
+    <article class="subject_article">
+        <h3 style="text-align: center;">고등학교 데이터 과학 내용체계</h3>
+        <nav class="subject_menu">
+            <ul>
+                <li><span class="subs">데이터 과학의 이해</span></li>
+                <li><span class="subs">데이터 준비와 분석</span></li>
+                <li><span class="subs">데이터 모델링과 평가</span></li>
+                <li><span class="subs">데이터 과학 프로젝트</span></li>
+            </ul>
+        </nav>
+        <form name ="quizform" id="quizform" method="" action="">
+            <article class="subject_article_area" id="blank">
+                <span style="font-weight: bold;">위의 과목을 클릭해 테스트를 시작하세요</span>
+            </article>
+        </form>
+    </article>
+    <script>
+        const subs = document.getElementsByClassName("subs");
+        let subnum = 0;
+        for (let i = 0; i < subs.length; i++) {
+            subs[i].style.cursor="pointer";
+            subs[i].addEventListener("mouseover", function() {
+                this.style.background = "aqua";
+            });
+
+            subs[i].addEventListener("mouseout", function() {
+                this.style.background = "";
+            });
+            subs[i].onclick = function() {
+                for (let j = 0; j < subs.length; j++) {
+                    subs[j].style.fontSize = "medium";
+                    subs[j].style.color = "black";
+                }
+                subs[i].style.fontSize = "larger";
+                subs[i].style.color = "blue";
+                if (i == 0) {
+                    subnum = 0;
+                    const blank = document.getElementById("blank");
+                    blank.innerHTML= '\
+                        <h4>(1) 데이터 과학의 이해</h4>\
+                        <table class="details" border="1" style="width:100%; border-collapse: collapse;">\
+                            <tr>\
+                                <td rowspan="2" class="category">핵심 아이디어</td>\
+                                <td class="detail" style="border-bottom: 0px;">• 디지털 사회의 시민에게는 <input type="text" name="quiz1" class="quiz_textbox"></input>이 필요하다.</td>\
+                            </tr>\
+                            <tr>\
+                                <td class="detail" style="border-top: 0px;">• <input type="text" name="quiz2" class="quiz_textbox"></input>에 대한 이해는 데이터를 활용하여 복잡한 문제를 해결하는 데 도움을 준다.</td>\
+                            </tr>\
+                            <tr>\
+                                <td rowspan="2" class="catedivision" style="text-align: left;"><span style="display: block; text-align: right;">구분</span><br>&nbsp;범주</td><td rowspan="2" class="division">내용 요소</td>\
+                            </tr>\
+                            <tr>\
+                            </tr>\
+                            <tr>\
+                                <td rowspan="3" class="category">지식 • 이해</td>\
+                                <td class="detail" style="border-bottom: 0px;">• <input type="text" name="quiz3" class="quiz_textbox"></input></td>\
+                            </tr>\
+                            <tr>\
+                                <td class="detail" style="border: 0px;">• <input type="text" name="quiz4" class="quiz_textbox"></input></td>\
+                            </tr>\
+                            <tr>\
+                                <td class="detail" style="border-top: 0px;">• <input type="text" name="quiz5" class="quiz_textbox"></input></td>\
+                            </tr>\
+                            <tr>\
+                                <td rowspan="3" class="category">과정 • 기능</td>\
+                                <td class="detail" style="border-bottom: 0px;">• 데이터 과학의 <input type="text" name="quiz6" class="quiz_textbox"></input></td>\
+                            </tr>\
+                            <tr>\
+                                <td class="detail" style="border: 0px;">• 데이터의 <input type="text" name="quiz7" class="quiz_textbox"></input></td>\
+                            </tr>\
+                            <tr>\
+                                <td class="detail" style="border-top: 0px;">• 데이터 <input type="text" name="quiz8" class="quiz_textbox"></input></td>\
+                            </tr>\
+                            <tr>\
+                                <td rowspan="3" class="category">가치 • 태도</td>\
+                                <td class="detail" style="border-bottom: 0px;">• <input type="text" name="quiz9" class="quiz_textbox"></input>의 중요성 인식</td>\
+                            </tr>\
+                            <tr>\
+                                <td class="detail" style="border: 0px;">• 데이터의 <input type="text" name="quiz10" class="quiz_textbox"></input></td>\
+                            </tr>\
+                            <tr>\
+                                <td class="detail" style="border-top: 0px;">• 데이터 과학을 통한 진로설계 참여</td>\
+                            </tr>\
+                        </table>\
+                        <input type="button" value="제출" onclick="submit_quiz()"></input>\
+                        <button type="reset" onclick="reset_quiz()">초기화</button>\
+                        <input type="button" value="정답 보이기" onclick="visualize_answers()"></input>\
+                    ';
+                } else if (i == 1) {
+                    subnum = 1;
+                    const blank = document.getElementById("blank");
+                    blank.innerHTML= '\
+                        <h4>(2) 데이터 준비와 분석</h4>\
+                        <table class="details" border="1" style="width:100%;">\
+                            <tr>\
+                                <td rowspan="2" class="category">핵심 아이디어</td>\
+                                <td class="detail" style="border-bottom: 0px;">• <input type="text" name="quiz1" class="quiz_textbox"></input>을 위해서는 데이터를 <input type="text" name="quiz2" class="quiz_textbox"></input>이 필요하다.</td>\
+                            </tr>\
+                            <tr>\
+                                <td class="detail" style="border-top: 0px;">• <input type="text" name="quiz3" class="quiz_textbox"></input>는 데이터를 <input type="text" name="quiz4" class="quiz_textbox"></input>로 변환하며, 지식을 추출하는 데 도움을 준다.</td>\
+                            </tr>\
+                            <tr>\
+                                <td rowspan="2" class="catedivision" style="text-align: left;"><span style="display: block; text-align: right;">구분</span><br>&nbsp;범주</td>\
+                                <td rowspan="2" class="division">내용 요소</td>\
+                            </tr>\
+                            <tr>\
+                            </tr>\
+                            <tr>\
+                                <td rowspan="2" class="category">지식 • 이해</td>\
+                                <td class="detail" style="border-bottom: 0px;">• <input type="text" name="quiz5" class="quiz_textbox"></input></td>\
+                            </tr>\
+                            <tr>\
+                                <td class="detail" style="border-top: 0px;">• <input type="text" name="quiz6" class="quiz_textbox"></input></td>\
+                            </tr>\
+                            <tr>\
+                                <td rowspan="4" class="category">과정 • 기능</td>\
+                                <td class="detail" style="border-bottom: 0px;">• 데이터 <input type="text" name="quiz7" class="quiz_textbox"></input></td>\
+                            </tr>\
+                            <tr>\
+                                <td class="detail" style="border: 0px;">• <input type="text" name="quiz8" class="quiz_textbox"></input>하기</td>\
+                            </tr>\
+                            <tr>\
+                                <td class="detail" style="border: 0px;">• 데이터 속성 간의 <input type="text" name="quiz9" class="quiz_textbox"></input>를 파악하고 통합하여 탐색하기</td>\
+                            </tr>\
+                            <tr>\
+                                <td class="detail" style="border-top: 0px;">• 서로 다른 데이터 분석 방법 <input type="text" name="quiz10" class="quiz_textbox"></input></td>\
+                            </tr>\
+                            <tr>\
+                                <td rowspan="2" class="category">가치 • 태도</td>\
+                                <td class="detail" style="border-bottom: 0px;">• 데이터가 <input type="text" name="quiz11" class="quiz_textbox"></input>  수집하는 자세</td>\
+                            </tr>\
+                            <tr>\
+                                <td class="detail" style="border-top: 0px;">• 데이터의 <input type="text" name="quiz12" class="quiz_textbox"></input> 인식</td>\
+                            </tr>\
+                        </table>\
+                        <input type="button" value="제출" onclick="submit_quiz()"></input>\
+                        <button type="reset" onclick="reset_quiz()">초기화</button>\
+                        <input type="button" value="정답 보이기" onclick="visualize_answers()"></input>\
+                    ';
+                } else if (i == 2) {
+                    subnum = 2;
+                    const blank = document.getElementById("blank");
+                    blank.innerHTML= '\
+                        <h4>(3) 데이터 모델링과 평가</h4>\
+                        <table class="details" border="1" style="width:100%;">\
+                            <tr>\
+                                <td rowspan="2" class="category">핵심 아이디어</td>\
+                                <td class="detail" style="border-bottom: 0px;">• 데이터 모델은 문제를 <input type="text" name="quiz1" class="quiz_textbox"></input>할 수 있도록 도움을 준다.</td>\
+                            </tr>\
+                            <tr>\
+                                <td class="detail" style="border-top: 0px;">• 데이터 기반의 합리적 의사 결정을 위해 <input type="text" name="quiz2" class="quiz_textbox"></input>해서 새로운 지식을 추출하고, 의미를 해석한다..</td>\
+                            </tr>\
+                            <tr>\
+                                <td rowspan="2" class="catedivision" style="text-align: left;"><span style="display: block; text-align: right;">구분</span><br>&nbsp;범주</td>\
+                                <td rowspan="2" class="division">내용 요소</td>\
+                            </tr>\
+                            <tr>\
+                            </tr>\
+                            <tr>\
+                                <td rowspan="4" class="category">지식 • 이해</td>\
+                                <td class="detail" style="border-bottom: 0px;">• <input type="text" name="quiz3" class="quiz_textbox"></input></td>\
+                            </tr>\
+                            <tr>\
+                                <td class="detail" style="border: 0px;">• <input type="text" name="quiz4" class="quiz_textbox"></input></td>\
+                            </tr>\
+                            <tr>\
+                                <td class="detail" style="border: 0px;">• <input type="text" name="quiz5" class="quiz_textbox"></input></td>\
+                            </tr>\
+                            <tr>\
+                                <td class="detail" style="border-top: 0px;">• <input type="text" name="quiz6" class="quiz_textbox"></input> </td>\
+                            </tr>\
+                            <tr>\
+                                <td rowspan="3" class="category">과정 • 기능</td>\
+                                <td class="detail" style="border-bottom: 0px;">• <input type="text" name="quiz7" class="quiz_textbox"></input> 탐색하기</td>\
+                            </tr>\
+                            <tr>\
+                                <td class="detail" style="border: 0px;">• 분석 결과 <input type="text" name="quiz8" class="quiz_textbox"></input></td>\
+                            </tr>\
+                            <tr>\
+                                <td class="detail" style="border-top: 0px;">• 분석 결과에 대한 <input type="text" name="quiz9" class="quiz_textbox"></input></td>\
+                            </tr>\
+                            <tr>\
+                                <td rowspan="2" class="category">가치 • 태도</td>\
+                                <td class="detail" style="border-bottom: 0px;">• 데이터에 대한 다양한 해석을 <input type="text" name="quiz10" class="quiz_textbox"></input></td>\
+                            </tr>\
+                            <tr>\
+                                <td class="detail" style="border-top: 0px;">• <input type="text" name="quiz11" class="quiz_textbox"></input>을 선택하여 적용하는 자세</td>\
+                            </tr>\
+                        </table>\
+                        <input type="button" value="제출" onclick="submit_quiz()"></input>\
+                        <button type="reset" onclick="reset_quiz()">초기화</button>\
+                        <input type="button" value="정답 보이기" onclick="visualize_answers()"></input>\
+                    ';
+                } else if (i == 3) {
+                    subnum = 3;
+                    const blank = document.getElementById("blank");
+                    blank.innerHTML= '\
+                        <h4>(4) 데이터 과학 프로젝트</h4>\
+                        <table class="details" border="1" style="width:100%;">\
+                            <tr>\
+                                <td rowspan="2" class="category">핵심 아이디어</td>\
+                                <td class="detail" style="border-bottom: 0px;">• 데이터 기반 문제 해결을 위해 데이터 과학의 <input type="text" name="quiz1" class="quiz_textbox"></input>를 바탕으로 탐구 과정을 수행한다.</td>\
+                            </tr>\
+                            <tr>\
+                                <td class="detail" style="border-top: 0px;">• 데이터 과학으로 문제를 해결할 때, <input type="text" name="quiz2" class="quiz_textbox"></input> 등 다양한 방법을 활용한다.</td>\
+                            </tr>\
+                            <tr>\
+                                <td rowspan="2" class="catedivision" style="text-align: left;"><span style="display: block; text-align: right;">구분</span><br>&nbsp;범주</td><td rowspan="2" class="division">내용 요소</td>\
+                            </tr>\
+                            <tr>\
+                            </tr>\
+                            <tr>\
+                                <td rowspan="3" class="category">지식 • 이해</td>\
+                                <td class="detail" style="border-bottom: 0px;">• <input type="text" name="quiz3" class="quiz_textbox"></input></td>\
+                            </tr>\
+                            <tr>\
+                                <td class="detail" style="border: 0px;">• <input type="text" name="quiz4" class="quiz_textbox"></input></td>\
+                            </tr>\
+                            <tr>\
+                                <td class="detail" style="border-top: 0px;">• <input type="text" name="quiz5" class="quiz_textbox"></input></td>\
+                            </tr>\
+                            <tr>\
+                                <td rowspan="4" class="category">과정 • 기능</td>\
+                                <td class="detail" style="border-bottom: 0px;">• 분야별 <input type="text" name="quiz6" class="quiz_textbox"></input>의 주제 조사하기</td>\
+                            </tr>\
+                            <tr>\
+                                <td class="detail" style="border: 0px;">• <input type="text" name="quiz7" class="quiz_textbox"></input>으로 데이터 속 의미 파악하기</td>\
+                            </tr>\
+                            <tr>\
+                                <td class="detail" style="border: 0px;">• <input type="text" name="quiz8" class="quiz_textbox"></input>으로 분석하기</td>\
+                            </tr>\
+                            <tr>\
+                                <td class="detail" style="border-top: 0px;">• <input type="text" name="quiz9" class="quiz_textbox"></input>  탐색하기</td>\
+                            </tr>\
+                            <tr>\
+                                <td rowspan="3" class="category">가치 • 태도</td>\
+                                <td class="detail" style="border-bottom: 0px;">• 문제를 해결하기 위한 <input type="text" name="quiz10" class="quiz_textbox"></input>을 고민하는 자세 </td>\
+                            </tr>\
+                            <tr>\
+                                <td class="detail" style="border: 0px;">• 복잡하고 어려운 문제를 끝까지 해결하기 위해 <input type="text" name="quiz11" class="quiz_textbox"></input></td>\
+                            </tr>\
+                            <tr>\
+                                <td class="detail" style="border-top: 0px;">• 일반화 및 공유 과정에서 윤리 문제 등 <input type="text" name="quiz12" class="quiz_textbox"></input></td>\
+                            </tr>\
+                        </table>\
+                        <input type="button" value="제출" onclick="submit_quiz()"></input>\
+                        <button type="reset" onclick="reset_quiz()">초기화</button>\
+                        <input type="button" value="정답 보이기" onclick="visualize_answers()"></input>\
+                    ';
+                }
+            };
+        }
+
+        document.getElementById('quizform').addEventListener('submit', function(event) {
+            event.preventDefault(); 
+        });
+
+        let total_questions = 0;
+
+        function submit_quiz() {
+            let answers = [];
+            if (subnum === 0) {
+                answers = [0, "데이터에 기반한 합리적인 의사 결정", "데이터 과학", "데이터 과학의 개념", "데이터의 형태와 속성", "데이터셋과 데이터베이스", "문제 해결 사례 탐색하기", "형태와 속성 파악하기", "통합의 의미 파악하기", "데이터 기반 의사 결정", "잠재적 가치 내면화"];
+                total_questions = 10;
+            } else if (subnum === 1) {
+                answers = [0, "데이터 분석", "수집", "전처리하는 과정", "데이터 처리", "분석에 효과적인 형태", "데이터 전처리", "데이터 분석 방법", "시각화하고 분석하기", "이상치와 결측치 처리하고 정규화 활용", "관계", "비교하기", "편향되지 않도록", "불확실성과 오류 가능성"];
+                total_questions = 12;
+            } else if (subnum === 2) {
+                answers = [0, "합리적으로 해결", "데이터를 분석", "데이터 모델의 개념", "회귀 분석로", "군집 분석", "연관 분석", "분석을 위한 도구", "평가하기", "의미 해석하기", "수용하는 태도", "적절한 분석 방법"];
+                total_questions = 11;
+            } else if (subnum === 3) {
+                answers = [0, "기본 개념과 원리", "통계적 방법이나 기계학습", "데이터 과학의 주제", "탐색적 데이터 분석", "결과의 의미 해석", "데이터 과학", "탐색적 데이터 분석", "기계학습 방법", "결과를 활용하는 방법", "창의적인 방법", "노력하는 태도", "사회적 영향 인식"];
+                total_questions = 12;
+            } 
+            for (let i = 1; i <= total_questions; i++) {
+                const user_answer = document.quizform['quiz' + i].value.trim();
+                if (user_answer === answers[i]) {
+                    correct_answer(i);
+                } else {
+                    wrong_answer(i);
+                }
+            }
+        }
+
+        function visualize_answers() {
+            let answers = [];
+            if (subnum === 0) {
+                answers = [0, "데이터에 기반한 합리적인 의사 결정", "데이터 과학", "데이터 과학의 개념", "데이터의 형태와 속성", "데이터셋과 데이터베이스", "문제 해결 사례 탐색하기", "형태와 속성 파악하기", "통합의 의미 파악하기", "데이터 기반 의사 결정", "잠재적 가치 내면화"];
+                total_questions = 10;
+            } else if (subnum === 1) {
+                answers = [0, "데이터 분석", "수집", "전처리하는 과정", "데이터 처리", "분석에 효과적인 형태", "데이터 전처리", "데이터 분석 방법", "시각화하고 분석하기", "이상치와 결측치 처리하고 정규화 활용", "관계", "비교하기", "편향되지 않도록", "불확실성과 오류 가능성"];
+                total_questions = 12;
+            } else if (subnum === 2) {
+                answers = [0, "합리적으로 해결", "데이터를 분석", "데이터 모델의 개념", "회귀 분석로", "군집 분석", "연관 분석", "분석을 위한 도구", "평가하기", "의미 해석하기", "수용하는 태도", "적절한 분석 방법"];
+                total_questions = 11;
+            } else if (subnum === 3) {
+                answers = [0, "기본 개념과 원리", "통계적 방법이나 기계학습", "데이터 과학의 주제", "탐색적 데이터 분석", "결과의 의미 해석", "데이터 과학", "탐색적 데이터 분석", "기계학습 방법", "결과를 활용하는 방법", "창의적인 방법", "노력하는 태도", "사회적 영향 인식"];
+                total_questions = 12;
+            }
+            for (let i = 1; i <= total_questions; i++) {
+                document.quizform['quiz' + i].value = answers[i];
+                document.quizform['quiz' + i].style.border = "2px solid blue";
+            }
+        }
+
+        function reset_quiz() {
+            for (let i = 1; i <= total_questions; i++) {
+                document.quizform['quiz' + i].style.border = "";
+            }
+        }
+
+        function correct_answer(a){
+            document.quizform['quiz' + a].style.border = "2px solid green";
+        }
+        function wrong_answer(a){
+            document.quizform['quiz' + a].style.border = "2px solid red";
+        }    
+    </script>
+</body>
+</html>

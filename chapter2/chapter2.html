@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>정보 컴퓨터 교과 교육론 공부하기</title>
+    <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+    <header>
+        <h2 class="headerline">2022 개정 정보과 교육과정</h2>
+    </header>
+    <nav>
+        <ul>
+            <li id="mainnav1"><a href="../main.html">Home</a></li>
+            <li id="mainnav2"><a href="../chapter1/chapter1.html">교육과정 공부하기</a></li>
+            <li id="mainnav3" style="font-weight: bold;"><a href="../chapter2/chapter2.html">교육과정 테스트하기</a></li>
+        </ul>
+    </nav>
+    <section class="container">
+        <article class="leftindexside">
+            <h3 style="text-align: center;"><a href="../chapter2/chapter2.html">2022 개정 교육과정</a></h3>
+                <ul class="chapter_leftlist">
+                    <li>[공통교육]
+                        <ul>
+                            <li><a href="../chapter1/chapter1_1/chapter1_1.html" target="right-frame" class="test_list">정보 소개</a></li>
+                                <ul>
+                                    <li>ㄴ <a href="./chapter2_1/chapter2_1_1.html" target="right-frame" class="test_list">내용체계</a></li>
+                                    <li>ㄴ <a href="./chapter2_1/chapter2_1_2.html" target="right-frame" class="test_list">성취기준</a></li>
+                                </ul>
+                        </ul>
+                    </li>
+                    <br><hr><br>
+                    <li>[선택 중심 교육과정]
+                        <ul>
+                            <li><a href="../chapter1/chapter1_2/chapter1_2.html" target="right-frame" class="test_list">정보 소개</a></li>
+                                <ul>
+                                    <li>ㄴ <a href="./chapter2_2/chapter2_2_1.html" target="right-frame" class="test_list">내용체계</a></li>
+                                    <li>ㄴ <a href="./chapter2_2/chapter2_2_2.html" target="right-frame" class="test_list">성취기준</a></li>
+                                </ul><br>
+                            <li><a href="../chapter1/chapter1_3/chapter1_3.html" target="right-frame" class="test_list">인공지능 기초 소개</a></li>
+                                <ul>
+                                    <li>ㄴ <a href="./chapter2_3/chapter2_3_1.html" target="right-frame" class="test_list">내용체계</a></li>
+                                    <li>ㄴ <a href="./chapter2_3/chapter2_3_2.html" target="right-frame" class="test_list">성취기준</a></li>
+                                </ul><br>
+                            <li><a href="../chapter1/chapter1_4/chapter1_4.html" target="right-frame" class="test_list">데이터 과학 소개</a></li>
+                                <ul>
+                                    <li>ㄴ <a href="./chapter2_4/chapter2_4_1.html" target="right-frame" class="test_list">내용체계</a></li>
+                                    <li>ㄴ <a href="./chapter2_4/chapter2_4_2.html" target="right-frame" class="test_list">성취기준</a></li>
+                                </ul><br>
+                            <li><a href="../chapter1/chapter1_5/chapter1_5.html" target="right-frame" class="test_list">소프트웨어와 생활 소개</a></li>
+                                <ul>
+                                    <li>ㄴ <a href="./chapter2_5/chapter2_5_1.html" target="right-frame" class="test_list">내용체계</a></li>
+                                    <li>ㄴ <a href="./chapter2_5/chapter2_5_2.html" target="right-frame" class="test_list">성취기준</a></li>
+                                </ul><br>
+                        </ul>
+                    </li>
+                </ul>
+        </article>
+        <article class="chapterpageArticle" id="content">
+            <iframe name="right-frame" frameborder="0" width="100%" height="100%"></iframe>
+        </article>
+    </section>
+    <footer>
+        <p style="text-align: center;"> 웹 프로그래밍 과제로 만든 정보과 교육과정 공부 사이트 입니다.</p>
+    </footer>
+    <script>
+        window.addEventListener("load", function(event) {
+			const article = document.getElementById("content");
+            article.innerHTML= '<h3> 2022 교육과정 테스트 하기</h3>\
+            <p> 좌측 메뉴를 눌러서 테스트할 내용을 선택해 주세요</p><br>\
+            내용 체계는 표의 빈칸을 채워야하고,<br>\
+            성취 기준은 문장의 빈칸을 채워야 합니다.<br><br>\
+            좋은 결과 있길 바랍니다!';
+		});
+
+        for (let i = 1; i <= 3; i++) {
+            document.getElementById("mainnav" + i).addEventListener("mouseover", function() {
+                this.style.backgroundColor = "#ddd";
+            });
+            document.getElementById("mainnav" + i).addEventListener("mouseout", function() {
+                this.style.backgroundColor = "";
+            });
+        }
+        
+        const test_list_elements = document.getElementsByClassName("test_list");
+        for (let i = 0; i < test_list_elements.length; i++) {
+            test_list_elements[i].addEventListener("click", function() {
+                const article = document.getElementById("content");
+                article.innerHTML= '<iframe name="right-frame" frameborder="0" width="100%" height="100%"></iframe>';
+            });
+
+            test_list_elements[i].addEventListener("mouseover", function() {
+                this.style.color = "blue";
+                this.style.fontWeight = "bold";
+            });
+
+            test_list_elements[i].addEventListener("mouseout", function() {
+                this.style.color = "";
+                this.style.fontWeight = "normal";
+            });
+
+            test_list_elements[i].addEventListener("click", function() {
+                for (let j = 0; j < test_list_elements.length; j++) {
+                    test_list_elements[j].style.fontWeight = "normal";
+                    test_list_elements[j].style.backgroundColor = "";
+                }                
+                this.style.backgroundColor = "#F8FA4F";
+                this.style.fontWeight = "bold";
+            });
+        }   
+    </script>
+</body>
+</html>

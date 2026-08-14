@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>2022 교육과정 - 고등학교 - 소프트웨어와 생활 - 성취기준</title>
+    <link rel="stylesheet" href="../../styles.css">
+</head>
+<body>
+    <article class="subject_article">
+        <h3 style="text-align: center;">고등학교 소프트웨어와 생활 성취기준</h3>
+        <nav class="subject_menu">
+            <ul>
+                <li><span class="subs">세상을 변화시키는 소프트웨어</span></li>
+                <li><span class="subs">창작을 지원하는 소프트웨어</span></li>
+                <li><span class="subs">현상을 분석하는 소프트웨어</span></li>
+                <li><span class="subs">모의 실험하는 소프트웨어</span></li>
+                <li><span class="subs">가치를 창출하는 소프트웨어</span></li>
+            </ul>
+        </nav>
+        <article class="subject_article_area_qualify" id="blank">
+            <span style="font-weight: bold;">위의 과목을 클릭해 테스트를 시작하세요</span>
+        </article>
+    </article>
+    <script>
+        const subs = document.getElementsByClassName("subs");
+        let subnum = 0;
+        for (let i = 0; i < subs.length; i++) {
+            subs[i].style.cursor="pointer";
+            subs[i].addEventListener("mouseover", function() {
+                this.style.background = "aqua";
+            });
+
+            subs[i].addEventListener("mouseout", function() {
+                this.style.background = "";
+            });
+            subs[i].onclick = function() {
+                for (let j = 0; j < subs.length; j++) {
+                    subs[j].style.fontSize = "medium";
+                    subs[j].style.color = "black";
+                }
+                subs[i].style.fontSize = "larger";
+                subs[i].style.color = "blue";
+                if (i == 0) {
+                    subnum = 0;
+                    const blank = document.getElementById("blank");
+                    blank.innerHTML= '\
+                    <p> [12소생01-01] <input type="text" name="quiz" class="quiz_qualify_textbox"></input><br>\
+                        <span class="answers3">소프트웨어가 세상을 변화시킨 사례를 탐색하고 소프트웨어가 사회 변화에 미치는 영향을 분석한다.</span><br>\
+                    </p>\
+                    <p> [12소생01-02] <input type="text" name="quiz" class="quiz_qualify_textbox"></input><br>\
+                        <span class="answers3">실세계의 문제와 현상을 소프트웨어의 관점으로 바라보고 소프트웨어 발전에 따른 미래 사회의 변화를 예측한다.</span><br>\
+                    </p>\
+                    <p> [12소생01-03] <input type="text" name="quiz" class="quiz_qualify_textbox"></input><br>\
+                        <span class="answers3">소프트웨어 융합을 통한 문제 해결 사례를 바탕으로, 다양한 학문 분야에서 소프트웨어와의 융합을 통해 문제를 해결하는 방법을 비교⋅분석한다.</span><br>\
+                    </p>\
+                    <input type="button" value="정답확인" onclick="show_answer()"></input>\
+                    <input type="button" value="정답삭제" onclick="hide_answer()"></input>\
+                    ';
+                }
+                else if (i == 1) {
+                    subnum = 1;
+                    const blank = document.getElementById("blank");
+                    blank.innerHTML= '\
+                    <p> [12소생02-01] <input type="text" name="quiz" class="quiz_qualify_textbox"></input><br>\
+                        <span class="answers3">피지컬 컴퓨팅 도구로 구현된 작품의 구성 및 작동 원리를 분석한다.</span><br>\
+                    </p>\
+                    <p> [12소생02-02] <input type="text" name="quiz" class="quiz_qualify_textbox"></input><br>\
+                        <span class="answers3">소프트웨어를 통해 아이디어를 표현하는 데 필요한 센서와 액추에이터를 선택하여 피지컬 컴퓨팅 시스템을 구성한다.</span><br>\
+                    </p>\
+                    <p> [12소생02-03] <input type="text" name="quiz" class="quiz_qualify_textbox"></input><br>\
+                        <span class="answers3">피지컬 컴퓨팅을 통해 미디어 아트 작품을 창작하고, 창작에 활용된 소프트웨어의 가치를 파악한다.</span><br>\
+                    </p>\
+                    <p> [12소생02-04] <input type="text" name="quiz" class="quiz_qualify_textbox"></input><br>\
+                        <span class="answers3">웨어러블 장치 작품을 창작하고 공유하는 과정을 통해 소프트웨어의 가치를 확산한다.</span><br>\
+                    </p>\
+                    <input type="button" value="정답확인" onclick="show_answer()"></input>\
+                    <input type="button" value="정답삭제" onclick="hide_answer()"></input>\
+                    ';
+                }
+                else if (i == 2) {
+                    subnum = 2;
+                    const blank = document.getElementById("blank");
+                    blank.innerHTML= '\
+                    <p> [12소생03-01] <input type="text" name="quiz" class="quiz_qualify_textbox"></input><br>\
+                        <span class="answers3">사회 현상을 분석할 수 있는 데이터의 중요성과 가치를 인식하고, 데이터를 탐색하여 활용 방안을 구상한다.</span><br>\
+                    </p>\
+                    <p> [12소생03-02] <input type="text" name="quiz" class="quiz_qualify_textbox"></input><br>\
+                        <span class="answers3">데이터 유형에 따라 적합한 방법으로 데이터를 수집하고, 목적에 맞게 처리하고 관리한다.</span><br>\
+                    </p>\
+                    <p> [12소생03-03] <input type="text" name="quiz" class="quiz_qualify_textbox"></input><br>\
+                        <span class="answers3">데이터를 분석하고 시각화하여 다양한 사회 현상의 의미를 해석한다.</span><br>\
+                    </p>\
+                    <p> [12소생03-04] <input type="text" name="quiz" class="quiz_qualify_textbox"></input><br>\
+                        <span class="answers3">데이터의 사회적 가치에 대한 이해를 토대로 데이터를 분석하고 의미를 파악한 후, 결과를 윤리적으로 활용한다.</span><br>\
+                    </p>\
+                    <input type="button" value="정답확인" onclick="show_answer()"></input>\
+                    <input type="button" value="정답삭제" onclick="hide_answer()"></input>\
+                    ';
+                }
+                else if (i == 3) {
+                    subnum = 3;
+                    const blank = document.getElementById("blank");
+                    blank.innerHTML= '\
+                    <p> [12소생04-01] <input type="text" name="quiz" class="quiz_qualify_textbox"></input><br>\
+                        <span class="answers3">시뮬레이션 프로그램의 개념과 구성요소를 이해하고 가치를 파악한다.</span><br>\
+                    </p>\
+                    <p> [12소생04-02] <input type="text" name="quiz" class="quiz_qualify_textbox"></input><br>\
+                        <span class="answers3">다양한 시뮬레이션 프로그램의 활용 분야를 탐색하고 활용 방안을 구상한다.</span><br>\
+                    </p>\
+                    <p> [12소생04-03] <input type="text" name="quiz" class="quiz_qualify_textbox"></input><br>\
+                        <span class="answers3">시뮬레이션 프로그램 구성 방법에 따라 복잡한 문제나 현상의 원리를 시뮬레이션 모델로 표현한다.</span><br>\
+                    </p>\
+                    <p> [12소생04-04] <input type="text" name="quiz" class="quiz_qualify_textbox"></input><br>\
+                        <span class="answers3">소프트웨어를 적극적으로 활용하여 시뮬레이션 모델을 구현한다.</span><br>\
+                    </p>\
+                    <input type="button" value="정답확인" onclick="show_answer()"></input>\
+                    <input type="button" value="정답삭제" onclick="hide_answer()"></input>\
+                    ';
+                }
+                else if (i == 4) {
+                    subnum = 4;
+                    const blank = document.getElementById("blank");
+                    blank.innerHTML= '\
+                    <p> [12소생05-01] <input type="text" name="quiz" class="quiz_qualify_textbox"></input><br>\
+                        <span class="answers3">소프트웨어 스타트업의 개념을 이해하고 새로운 가치를 창출하는 소프트웨어 스타트업 사례를 분석한다.</span><br>\
+                    </p>\
+                    <p> [12소생05-02] <input type="text" name="quiz" class="quiz_qualify_textbox"></input><br>\
+                        <span class="answers3">소프트웨어 스타트업 프로젝트의 수행 과정을 이해하고, 사용자 요구를 분석하여 소프트웨어 스타트업 아이디어를 구안한다.</span><br>\
+                    </p>\
+                    <p> [12소생05-03] <input type="text" name="quiz" class="quiz_qualify_textbox"></input><br>\
+                        <span class="answers3">스타트업 프로젝트에 적합한 소프트웨어를 협력적으로 설계하고 구현한다.</span><br>\
+                    </p>\
+                    <p> [12소생05-04] <input type="text" name="quiz" class="quiz_qualify_textbox"></input><br>\
+                        <span class="answers3">개발한 소프트웨어의 가치를 사회적, 기능적, 윤리적 관점에서 평가한다.</span><br>\
+                    </p>\
+                    <input type="button" value="정답확인" onclick="show_answer()"></input>\
+                    <input type="button" value="정답삭제" onclick="hide_answer()"></input>\
+                    ';
+                }
+            };
+
+            function show_answer() {
+                const answers3 = document.getElementsByClassName("answers3");
+                for (let k = 0; k < answers3.length; k++) {
+                    answers3[k].style.visibility = "visible";
+                }
+            }
+
+            function hide_answer() {
+                const answers3 = document.getElementsByClassName("answers3");
+                for (let k = 0; k < answers3.length; k++) {
+                    answers3[k].style.visibility = "hidden";
+                }
+            }
+        }
+    </script>
+</body>
+</html>
